@@ -2,7 +2,7 @@
 #
 .DS_Store
 #typescript
-artifacts/*
+artifacts/
 
 # Xcode
 #
