@@ -4,9 +4,9 @@ import {
   } from 'react-navigation'
   import React from 'react'
   import {  connect  } from 'react-redux'
-  import FirstTab from './Containers/MainTab'
-  import SecondTab from './Containers/DeleteTab'
-  import ThirdTab from './Containers/DoneTab'
+  import FirstTab from './MainTab'
+  import SecondTab from './DeleteTab'
+  import ThirdTab from './DoneTab'
 
   const defaultTabs = {
     labelStyle: {
