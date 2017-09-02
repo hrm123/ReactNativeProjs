@@ -1,15 +1,18 @@
-import React from 'react';
-import { ViewStyle, View, Text, StyleSheet } from 'react-native';
-import TodoButton from "./TodoButton";
-import * as TodosTsTypes from '../types/todoTypes';
+import React from 'react'
+import { ViewStyle, View, Text, StyleSheet } from 'react-native'
+import TodoButton from './TodoButton'
+import * as TodosTsTypes from '../types/todoTypes'
 
-const Todo : React.StatelessComponent<TodosTsTypes.TodoModel> = props => {
-    const todoButton1Data: TodosTsTypes.TodoButtonModel = { name: 'Done',
-                complete: props.todo.Complete,
-                onPress: () => props.toggleComplete(props.todo.TaskId) }
+const Todo: React.StatelessComponent<TodosTsTypes.TodoModel> = props => {
+    const todoButton1Data: TodosTsTypes.TodoButtonModel = {
+            name: 'Done',
+            callback: (cbParams: Array<string>) => { props.toggleComplete(Number(cbParams[0])) },
+            customCallbackData: [props.todo.TaskId.toString() ]
+    }
     const todoButton2Data: TodosTsTypes.TodoButtonModel = {
         name: 'Delete',
-        onPress : () => props.deleteTodo(props.todo.TaskId)
+        callback: (cbParams: Array<string>) => { props.deleteTodo(Number(cbParams[0])) },
+        customCallbackData: [props.todo.TaskId.toString() ]
     }
     return <View style={styles.todoContainer}>
         <Text>
@@ -50,6 +53,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'center'
     } as ViewStyle
-});
+})
 
-export default Todo;
+export default Todo

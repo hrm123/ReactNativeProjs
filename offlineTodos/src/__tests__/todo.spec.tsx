@@ -11,7 +11,7 @@ let global: any
 describe('>>>T O D O S COMPONENT -- tests', () => {
     let wrapper
     let fn2 = jest.fn()  // (taskId: number) => { console.log(taskId)}
-    let onPress: TodosTsTypes.PressFn = () => { console.log('onPress called')}
+    let onPress: TodosTsTypes.PressFn = (cbParams: Array<string>) => { console.log(cbParams)}
     let todoModel: TodosTsTypes.TodoModel = {
         deleteTodo: fn2,
         toggleComplete: fn2,
@@ -62,10 +62,11 @@ describe('>>>T O D O S COMPONENT -- tests', () => {
             expect(todoButtons).toHaveLength(2)
             //console.log(todoButtons)
             //console.log(todoButtons.first().props())
-            let doneButtonState: TodosTsTypes.TodoButtonModel = {name: 'Done', onPress: onPress, complete : false}
-            let deleteButtonState: TodosTsTypes.TodoButtonModel = {name: 'Delete', onPress: onPress, complete : false}
+            let cbParams1: Array<string> = ["1"]
+            let doneButtonState: TodosTsTypes.TodoButtonModel = {name: 'Done', callback: onPress, customCallbackData: cbParams1}
+            let cbParams2: Array<string> = ["2"]
+            let deleteButtonState: TodosTsTypes.TodoButtonModel = {name: 'Delete', callback: onPress, customCallbackData: cbParams2}
             expect(todoButtons.first().props().name).toEqual(doneButtonState.name)
-            expect(todoButtons.first().props().complete).toEqual(doneButtonState.complete)
             expect(todoButtons.at(1).props().name).toEqual(deleteButtonState.name)
             //expect(todoButtons.at(1).props().onPress.getClass().equals(onPress.getClass())).toBeTruthy()
 

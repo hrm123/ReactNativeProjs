@@ -56,15 +56,17 @@
     export type TodoListModel = {
         todos: Todo[],
         toggleComplete: (id: number) => void,
-        deleteTodo: (id: number) => void
+        deleteTodo: (id: number) => void,
+        reopenTodo: (id: number) => void,
     }
 
-    export type PressFn = () => void
+    export type PressFn = (callbackParams : Array<string>) => void
 
     export type TodoButtonModel = {
-        onPress: PressFn,
-        complete?: boolean,
-        name: string
+        name: string,
+        callback: PressFn,
+        customCallbackData: Array<string>
+
     }
 
     export interface IInputProps {

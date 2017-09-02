@@ -5,13 +5,12 @@ import * as TodosTsTypes from '../types/todoTypes';
 const TodoButton : React.StatelessComponent<TodosTsTypes.TodoButtonModel> = props => {
     return (
         <TouchableHighlight
-            onPress={props.onPress}
+            onPress={() => {props.callback(props.customCallbackData)}}
             underlayColor='#efefef'
             style={styles.button}
         >
             <Text style={[
                 styles.text,
-                props.complete ? styles.complete : null,
                 props.name === 'Delete' ? styles.deleteButton : null ]}
             >
                 {props.name}
