@@ -15,7 +15,7 @@ export interface DeleteTabConnectProps {
 }
 
 export interface DeleteTabDispatchProps {
-  onUnDeleteTask: (todo: TodosTSTypes.Todo) => void,
+  onReopenTask: (todo: TodosTSTypes.Todo) => void,
   onTitleChanged: (newVal: string) => void
 }
 
@@ -26,19 +26,20 @@ class DeleteTab extends React.Component<DeleteTabFullProps, any> {
     super(props)
   }
 
-  undeleteTask = (taskId) => {
+  reopenTask = (taskId) => {
     const { deletedTodos : todosList } = this.props
     const currentTodo = todosList.filter((td) => td.TaskId === taskId)
     if (currentTodo && currentTodo.length === 1) {
-      this.props.onUnDeleteTask(currentTodo[0])
+      this.props.onReopenTask(currentTodo[0])
     }
   }
 
   public render(): JSX.Element {
     const todosListModel: TodosTSTypes.TodoListModel  = {
       todos : this.props.deletedTodos,
-      deleteTodo: this.undeleteTask,
-      toggleComplete : null
+      deleteTodo: undefined,
+      toggleComplete : undefined,
+      reopenTodo: this.reopenTask
     }
     return (
         <View>
@@ -50,7 +51,7 @@ class DeleteTab extends React.Component<DeleteTabFullProps, any> {
 
 const mapStateToProps = (state: TodosTSTypes.TodosState /*, ownProps?: Props */): DeleteTabConnectProps => {
   const currentProps: DeleteTabConnectProps = Object.assign(this.props,  {
-    pendingTodos: state.pendingTodos,
+    deletedTodos: state.deletedTodos,
     maxTodoIndex: state.maxTodoIndex
   })
   return currentProps
@@ -61,7 +62,7 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<any>): DeleteTabDispatchPro
     onTitleChanged:  (newVal) => {
       dispatch(todosActions.titleChanged(newVal))
     },
-    onUnDeleteTask: (todo) => {
+      onReopenTask: (todo) => {
       dispatch(todosActions.deleteTodos(todo))
     }
   }

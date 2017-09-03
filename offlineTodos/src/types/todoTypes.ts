@@ -60,7 +60,7 @@
         reopenTodo: (id: number) => void,
     }
 
-    export type PressFn = (callbackParams : Array<string>) => void
+    export type PressFn = (callbackParams: Array<string>) => void
 
     export type TodoButtonModel = {
         name: string,
