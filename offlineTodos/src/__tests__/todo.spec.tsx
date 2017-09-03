@@ -4,7 +4,7 @@ import { Text } from 'react-native'
 import renderer from 'react-test-renderer'
 import Todo from '../components/Todo'
 import TodoButton from '../components/TodoButton'
-import TodosTsTypes from '../types/todoTypes'
+import * as TodosTsTypes from '../types/todoTypes'
 
 let global: any
 

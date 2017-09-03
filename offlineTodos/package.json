@@ -58,6 +58,9 @@
       "tsx",
       "js"
     ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ],
     "collectCoverageFrom": [
       "artifacts/**/*.js",
       "!artifacts/**/*.spec.js",

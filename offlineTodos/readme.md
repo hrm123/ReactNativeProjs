@@ -1,0 +1,1 @@
+delete \offlineTodos\node_modules\react-native\Libraries\Core\__mocks__\ErrorUtils.js file.
