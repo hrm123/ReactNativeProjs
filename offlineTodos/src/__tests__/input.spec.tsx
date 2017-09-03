@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount, shallow, render } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import {Input} from '../components/Input'
 import * as TodosTsTypes from '../types/todoTypes'
 import { TextInput } from 'react-native'
@@ -17,13 +17,12 @@ describe('>>>Input COMPONENT -- tests', () => {
         inputChange: mockFn
     }
     beforeEach(() => {
-      let jsdom = require('jsdom').jsdom
-      global.document = jsdom('')
+        let jsdom = require('jsdom').jsdom
+        global.document = jsdom('')
         global.window = global.document.parentWindow
-      // global.window = document.defaultView
-      global.mount = mount
-      global.render = render
-      global.shallow = shallow
+        global.mount = mount
+        // global.render = mockRend
+        global.shallow = shallow
       Object.keys(document.defaultView).forEach((property) => {
         if (typeof global[property] === 'undefined') {
           global[property] = document.defaultView[property]

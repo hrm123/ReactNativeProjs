@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount, render, shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import { Text } from 'react-native'
 import renderer from 'react-test-renderer'
 import Todo from '../components/Todo'
@@ -27,9 +27,10 @@ describe('>>>T O D O S COMPONENT -- tests', () => {
     beforeEach(() => {
       let jsdom = require('jsdom').jsdom
       global.document = jsdom('')
-      global.window = document.defaultView
+        global.window = global.document.parentWindow
+      // global.window = document.defaultView
       global.mount = mount
-      global.render = render
+      // global.render = render
       global.shallow = shallow
       Object.keys(document.defaultView).forEach((property) => {
         if (typeof global[property] === 'undefined') {

@@ -4,9 +4,9 @@ import {
   } from 'react-navigation'
   import React from 'react'
   import {  connect  } from 'react-redux'
-  import FirstTab from './MainTab'
-  import SecondTab from './DeleteTab'
-  import ThirdTab from './DoneTab'
+  import FirstScreen from './MainTab'
+  import SecondScreen from './DeleteTab'
+  import ThirdScreen from './DoneTab'
 
   const defaultTabs = {
     labelStyle: {
@@ -27,13 +27,13 @@ import {
 
 const BottomTabs = TabNavigator({
     FirstTab: {
-      screen: FirstTab
+      screen: FirstScreen
     },
     SecondTab: {
-      screen: SecondTab
+      screen: SecondScreen
     },
     ThirdTab: {
-      screen: ThirdTab
+      screen: ThirdScreen
     }
   },
   {
