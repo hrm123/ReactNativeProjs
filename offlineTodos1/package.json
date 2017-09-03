@@ -4,7 +4,13 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "npm run build && jest",
+    "tsc": "tsc",
+    "clean": "rimraf artifacts",
+    "build": "npm run clean && npm run tsc -- ",
+    "lint": "tslint src/**/*.ts",
+    "watch": "npm run build -- -w",
+    "start:android": "npm run build && react-native run-android "
   },
   "dependencies": {
     "react": "16.0.0-alpha.12",
@@ -32,6 +38,27 @@
     "webpack": "^3.5.5"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "testRegex": "artifacts/.+\\.(test|spec).(ts|tsx|js)$",
+    "coverageDirectory": "coverage",
+    "collectCoverage": false,
+    "coverageReporters": [
+      "text-summary",
+      "html"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
+    ],
+    "collectCoverageFrom": [
+      "artifacts/**/*.js",
+      "!artifacts/**/*.spec.js",
+      "!artifacts/**/*.index.js"
+    ],
+    "testEnvironment": "jsdom"
   }
 }
