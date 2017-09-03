@@ -8,7 +8,7 @@ import {
   import SecondScreen from './DeleteTab'
   import ThirdScreen from './DoneTab'
 
-  const defaultTabs = {
+export const defaultTabs = {
     labelStyle: {
       fontFamily: 'nemoy-medium',
       fontSize: 16
@@ -25,7 +25,7 @@ import {
     }
   }
 
-const BottomTabs = TabNavigator({
+export const BottomTabs = TabNavigator({
     FirstTab: {
       screen: FirstScreen
     },
@@ -44,7 +44,7 @@ const BottomTabs = TabNavigator({
     }
   })
 
-const MainNavigation = StackNavigator({
+export const MainNavigation = StackNavigator({
   App: {
     screen: BottomTabs
     }}, {
@@ -53,8 +53,9 @@ const MainNavigation = StackNavigator({
       headerMode: 'none'
     })
 
-
-const AppWithNavigationState = ({ dispatch, nav }) => {
+/*
+export const AppWithNavigationState = ({ dispatch, nav }) => {
+  debugger;
     let navHlprs = addNavigationHelpers({ dispatch, state: nav });
     return (
         <MainNavigation navigation={navHlprs} screenProps={ {'uuid': nav.uuid} }/>
@@ -64,5 +65,37 @@ const AppWithNavigationState = ({ dispatch, nav }) => {
 const mapStateToProps = state => ({
     nav: state.nav
 })
+*/
 
-export default connect(mapStateToProps)(AppWithNavigationState);
+export class AppWithNavigationState extends React.Component<any, any> {
+    constructor(props) {
+        super(props)
+    }
+
+    public render(): JSX.Element {
+        debugger;
+        let navHlprs = addNavigationHelpers({ dispatch:this.props.dispatch, state: this.props.nav });
+        return (
+            <MainNavigation navigation={navHlprs} screenProps={ {'uuid': this.props.nav.uuid} }/>
+        )
+    }
+
+}
+
+
+
+const mapStateToProps = state => ({
+    nav: state.nav
+})
+
+const mapDispatchToProps = () => {
+    return {
+
+    }
+}
+
+export const connectedNavApp = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AppWithNavigationState)
+

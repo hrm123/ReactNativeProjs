@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import AppWithNavigationState from './navigation'
+import * as NavItems  from './navigation'
 import { Provider  } from 'react-redux'
 import configureStore from '../configureStore'
 
@@ -11,7 +11,7 @@ export interface IAppProps {
 
 }
 
-class App extends Component<IAppProps, any> {
+class AppMain extends Component<IAppProps, any> {
     constructor(props: IAppProps) {
         super(props)
         this.isLoaded = this.isLoaded.bind(this)
@@ -22,18 +22,20 @@ class App extends Component<IAppProps, any> {
     }
 
     isLoaded() {
+        debugger;
         this.setState({ isLoading: false })
     }
 
     render() {
+        debugger;
         if (this.state.isLoading) return undefined
 
         return(
             <Provider store={ store }>
-                <AppWithNavigationState />
+                <NavItems.connectedNavApp />
             </Provider>
         )
     }
 }
 
-export default App
+export default AppMain
