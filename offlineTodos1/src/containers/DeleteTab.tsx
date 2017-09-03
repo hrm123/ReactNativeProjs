@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Redux from 'redux'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import * as TodosTSTypes from '../types/todoTypes'
 import TodoList from '../components/TodoList'
@@ -21,7 +21,7 @@ export interface DeleteTabDispatchProps {
 
 type DeleteTabFullProps = DeleteTabProps & DeleteTabDispatchProps & DeleteTabConnectProps
 
-class DeleteTab extends React.Component<DeleteTabFullProps, any> {
+export class DeleteTab extends React.Component<DeleteTabFullProps, any> {
   constructor(props: DeleteTabFullProps) {
     super(props)
   }
@@ -72,3 +72,14 @@ export const DeleteTabContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(DeleteTab)
+
+
+export default class SecondTab extends React.Component<any,any> {
+  render() {
+    return (
+        <View>
+          <Text>Tab Page #2</Text>
+        </View>
+    )
+  }
+}

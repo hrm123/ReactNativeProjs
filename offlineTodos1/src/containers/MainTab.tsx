@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Redux from 'redux'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import * as TodosTSTypes from '../types/todoTypes'
 import TodoList from '../components/TodoList'
@@ -22,7 +22,7 @@ export interface MainTabDispatchProps {
 
 type MainTabFullProps = MainTabProps & MainTabDispatchProps & MainTabConnectProps & TodosTSTypes.ITabCommonConnectProps
 
-class MainTab extends React.Component<MainTabFullProps, any> {
+export class MainTab extends React.Component<MainTabFullProps, any> {
   constructor(props: MainTabFullProps) {
       super(props)
   }
@@ -87,3 +87,14 @@ export const MainTabContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(MainTab)
+
+
+export default class FirstTab extends React.Component<any,any> {
+    render() {
+        return (
+            <View>
+                <Text>Tab Page #1</Text>
+            </View>
+        )
+    }
+}

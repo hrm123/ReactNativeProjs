@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import * as TodosTSTypes from '../types/todoTypes'
 import TodoList from '../components/TodoList'
@@ -20,7 +20,7 @@ export interface DoneTabDispatchProps {
 
 type DoneTabFullProps = DoneTabProps & DoneTabDispatchProps & DoneTabConnectProps & TodosTSTypes.ITabCommonConnectProps
 
-class DoneTab extends React.Component<DoneTabFullProps, any> {
+export class DoneTab extends React.Component<DoneTabFullProps, any> {
   constructor(props: DoneTabFullProps) {
     super(props)
   }
@@ -60,3 +60,13 @@ export const DoneTabContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(DoneTab)
+
+export default class ThirdTab extends React.Component<any,any> {
+  render() {
+    return (
+        <View>
+          <Text>Tab Page #3</Text>
+        </View>
+    )
+  }
+}
