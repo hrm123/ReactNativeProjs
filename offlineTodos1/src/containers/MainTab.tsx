@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Redux from 'redux'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
 import * as TodosTSTypes from '../types/todoTypes'
 import TodoList from '../components/TodoList'
@@ -57,10 +57,11 @@ export class MainTab extends React.Component<MainTabFullProps, any> {
   }
 }
 
-const mapStateToProps = (state: TodosTSTypes.TodosState /*, ownProps?: Props */): MainTabConnectProps => {
-    const currentProps: MainTabConnectProps = Object.assign(this.props,  {
-        pendingTodos: state.pendingTodos,
-        maxTodoIndex: state.maxTodoIndex
+const mapStateToProps = (state: any /*, ownProps?: Props */): MainTabConnectProps => {
+    debugger;
+    const currentProps: MainTabConnectProps = Object.assign({}, this.props,  {
+        pendingTodos: state.todos.pendingTodos,
+        maxTodoIndex: state.todos.maxTodoIndex
     })
   return currentProps
 }
@@ -83,12 +84,12 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<any>): MainTabDispatchProps
   }
 }
 
-export const MainTabContainer = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(MainTab)
 
-
+/*
 export default class FirstTab extends React.Component<any,any> {
     render() {
         return (
@@ -98,3 +99,4 @@ export default class FirstTab extends React.Component<any,any> {
         )
     }
 }
+*/

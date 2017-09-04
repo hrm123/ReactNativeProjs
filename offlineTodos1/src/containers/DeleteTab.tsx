@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Redux from 'redux'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
 import * as TodosTSTypes from '../types/todoTypes'
 import TodoList from '../components/TodoList'
@@ -49,10 +49,10 @@ export class DeleteTab extends React.Component<DeleteTabFullProps, any> {
   }
 }
 
-const mapStateToProps = (state: TodosTSTypes.TodosState /*, ownProps?: Props */): DeleteTabConnectProps => {
-  const currentProps: DeleteTabConnectProps = Object.assign(this.props,  {
-    deletedTodos: state.deletedTodos,
-    maxTodoIndex: state.maxTodoIndex
+const mapStateToProps = (state: any /*, ownProps?: Props */): DeleteTabConnectProps => {
+  const currentProps: DeleteTabConnectProps = Object.assign({}, this.props,  {
+    deletedTodos: state.todos.deletedTodos,
+    maxTodoIndex: state.todos.maxTodoIndex
   })
   return currentProps
 }
@@ -68,12 +68,12 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<any>): DeleteTabDispatchPro
   }
 }
 
-export const DeleteTabContainer = connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
 )(DeleteTab)
 
-
+/*
 export default class SecondTab extends React.Component<any,any> {
   render() {
     return (
@@ -83,3 +83,4 @@ export default class SecondTab extends React.Component<any,any> {
     )
   }
 }
+    */

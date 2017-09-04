@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import { connect } from 'react-redux'
 import * as TodosTSTypes from '../types/todoTypes'
 import TodoList from '../components/TodoList'
@@ -40,10 +40,10 @@ export class DoneTab extends React.Component<DoneTabFullProps, any> {
   }
 }
 
-const mapStateToProps = (state: TodosTSTypes.TodosState /*, ownProps?: Props */): DoneTabConnectProps => {
-  const currentProps: DoneTabConnectProps = Object.assign(this.props,  {
-    completedTodos: state.completedTodos,
-    maxTodoIndex: state.maxTodoIndex
+const mapStateToProps = (state: any /*, ownProps?: Props */): DoneTabConnectProps => {
+  const currentProps: DoneTabConnectProps = Object.assign({}, this.props,  {
+    completedTodos: state.todos.completedTodos,
+    maxTodoIndex: state.todos.maxTodoIndex
   })
   return currentProps
 }
@@ -56,11 +56,12 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<any>): DoneTabDispatchProps
   }
 }
 
-export const DoneTabContainer = connect(
+export default  connect(
     mapStateToProps,
     mapDispatchToProps
 )(DoneTab)
 
+/*
 export default class ThirdTab extends React.Component<any,any> {
   render() {
     return (
@@ -70,3 +71,4 @@ export default class ThirdTab extends React.Component<any,any> {
     )
   }
 }
+    */
