@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native'
 
-class Button extends Component<any, any>{
+export default  class Button extends Component<any, any>{
     constructor(props) {
         super(props)
     }
@@ -51,5 +51,3 @@ const styles = StyleSheet.create({
         fontWeight: '600'
     }
 })
-
-export default Button

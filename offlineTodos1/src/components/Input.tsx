@@ -18,7 +18,7 @@ class Input extends Component = () => (
 
 
 
-export class Input extends Component<TodosTsTypes.IInputProps, any> {
+export default class Input extends Component<TodosTsTypes.IInputProps, any> {
     constructor(props: TodosTsTypes.IInputProps) {
         super(props)
         this.state = {text : this.props.inputValue}

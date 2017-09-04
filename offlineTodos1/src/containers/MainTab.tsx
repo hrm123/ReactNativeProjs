@@ -1,10 +1,12 @@
 import React from 'react'
 import * as Redux from 'redux'
-import { View } from 'react-native'
+import { View, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import * as TodosTSTypes from '../types/todoTypes'
 import TodoList from '../components/TodoList'
 const todosActions =  require('../actions/todosActions')
+import TodoInput from '../components/Input';
+import TodoButton from '../components/Button';
 
 export interface MainTabProps  {
 }
@@ -42,6 +44,25 @@ export class MainTab extends React.Component<MainTabFullProps, any> {
         this.props.onTaskCompleted(currentTodo[0])
     }
   }
+
+    inputChange = (nv) => {
+        this.props.onTitleChanged(nv);
+    }
+
+    submitTodo = () => {
+        if(this.props.TaskTitle.match(/^\s*$/)){
+            return;
+        }
+        let todo: TodosTSTypes.Todo = {
+            "Task": this.props.TaskTitle,
+            "taskType": TodosTSTypes.enumTaskType.General,
+            "TaskId": -1, // will be updated in the action method
+            CreateTime: new Date()
+
+        }
+        this.props.onSubmitClick(todo);
+    }
+
   public render(): JSX.Element {
     const todosListModel: TodosTSTypes.TodoListModel  = {
       todos : this.props.pendingTodos,
@@ -50,9 +71,18 @@ export class MainTab extends React.Component<MainTabFullProps, any> {
         reopenTodo: undefined
     }
     return (
-      <View>
-        <TodoList {...todosListModel} />
-      </View>
+        <View style={{flex: 1,flexDirection: 'column'}}>
+            <ScrollView keyboardShouldPersistTaps="handled" >
+                <TodoInput
+                    inputValue={this.props.TaskTitle}
+                    inputChange={this.inputChange}
+                />
+              <View>
+                <TodoList {...todosListModel} />
+              </View>
+                <TodoButton submitTodo={this.submitTodo} />
+            </ScrollView>
+        </View>
     )
   }
 }
