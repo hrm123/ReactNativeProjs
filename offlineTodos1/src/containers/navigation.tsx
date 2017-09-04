@@ -76,7 +76,7 @@ export class AppWithNavigationState extends React.Component<any, any> {
         debugger;
         let navHlprs = addNavigationHelpers({ dispatch:this.props.dispatch, state: this.props.nav });
         return (
-            <MainNavigation navigation={navHlprs} screenProps={ {'uuid': this.props.nav.uuid} }/>
+            <MainNavigation navigation={navHlprs} screenProps={ {'uuid': '123'} }/>
         )
     }
 
@@ -88,14 +88,8 @@ const mapStateToProps = state => ({
     nav: state.nav
 })
 
-const mapDispatchToProps = () => {
-    return {
 
-    }
-}
-
-export const connectedNavApp = connect(
-    mapStateToProps,
-    mapDispatchToProps
+export default connect(
+    mapStateToProps
 )(AppWithNavigationState)
 

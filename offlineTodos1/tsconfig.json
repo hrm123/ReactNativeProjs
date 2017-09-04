@@ -22,7 +22,8 @@
   "types": [
     "react",
     "react-native",
-    "jest"
+    "jest",
+    "react-navigation"
   ],
   "typeRoots": [
     "node_modules/@types"
