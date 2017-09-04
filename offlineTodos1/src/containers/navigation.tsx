@@ -27,13 +27,16 @@ export const defaultTabs = {
 
 export const BottomTabs = TabNavigator({
     FirstTab: {
-      screen: FirstScreen
+      screen: FirstScreen,
+        navigationOptions: { title: 'Pending' }
     },
     SecondTab: {
-      screen: SecondScreen
+      screen: SecondScreen,
+        navigationOptions: { title: 'Deleted' }
     },
     ThirdTab: {
-      screen: ThirdScreen
+      screen: ThirdScreen,
+        navigationOptions: { title: 'Done' }
     }
   },
   {
