@@ -38,8 +38,14 @@ export default function todosReducer(currentState: TodosTsTypes.TodosState = ini
       } else {
         return currentState
     }
+    /*
+    case REHYDRATE:
+      debugger
+      var incoming = action.payload.myReducer
+      if (incoming) return {...state, ...incoming, specialKey: processSpecial(incoming.specialKey)}
+      return state
+      */
     default:
-      debugger;
       return currentState
   }
 }

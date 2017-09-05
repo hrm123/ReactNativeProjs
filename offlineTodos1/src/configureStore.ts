@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native' // we need to import AsyncStorage to use as a storage engine
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { autoRehydrate, persistStore } from 'redux-persist'
 import rootReducer from './reducers/rootReducer'
 import thunk from 'redux-thunk'
@@ -11,15 +11,27 @@ import * as EnvironmentDetails from './environment'
 const configureStore: any = (onComplete) => {
     const logger = createLogger({})
     const middlewares = [thunk ]
+    let store
     if ( EnvironmentDetails.env === 'dev') {
         middlewares.push(logger)
+        store =  composeWithDevTools(
+            applyMiddleware(...middlewares)
+            , autoRehydrate()
+        ) (createStore)(rootReducer)
+    }
+    else{
+        store = createStore(
+            rootReducer,
+            undefined,
+            compose(
+                applyMiddleware(...middlewares),
+                autoRehydrate()
+            )
+        )
     }
     // middlewares.push(promise)
-    const store =  composeWithDevTools(
-      applyMiddleware(...middlewares)
-      , autoRehydrate()
-    ) (createStore)(rootReducer)
-    persistStore(store, { storage: AsyncStorage }, onComplete).purge()
+
+    persistStore(store, { storage: AsyncStorage }, onComplete)
     return store
 }
 

@@ -90,7 +90,6 @@ export class MainTab extends React.Component<MainTabFullProps, any> {
 }
 
 const mapStateToProps = (state: any /*, ownProps?: Props */): MainTabConnectProps => {
-    debugger;
     const currentProps: MainTabConnectProps = Object.assign({}, this.props,  {
         pendingTodos: state.todos.pendingTodos,
         maxTodoIndex: state.todos.maxTodoIndex,

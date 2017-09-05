@@ -32,7 +32,6 @@ function nav(state , action) {
       );
       break;
     default:
-        debugger;
       nextState = MainNavigation.router.getStateForAction(action, state);
       Object.assign(nextState,{uuid})
       break;
