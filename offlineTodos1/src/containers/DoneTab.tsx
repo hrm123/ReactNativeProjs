@@ -12,6 +12,7 @@ export interface DoneTabProps  {
 export interface DoneTabConnectProps {
   completedTodos: TodosTSTypes.Todo[],
   maxTodoIndex: number,
+    TaskTitle: string
 }
 
 export interface DoneTabDispatchProps {
@@ -43,7 +44,8 @@ export class DoneTab extends React.Component<DoneTabFullProps, any> {
 const mapStateToProps = (state: any /*, ownProps?: Props */): DoneTabConnectProps => {
   const currentProps: DoneTabConnectProps = Object.assign({}, this.props,  {
     completedTodos: state.todos.completedTodos,
-    maxTodoIndex: state.todos.maxTodoIndex
+    maxTodoIndex: state.todos.maxTodoIndex,
+      TaskTitle: state.todos.inputValue
   })
   return currentProps
 }

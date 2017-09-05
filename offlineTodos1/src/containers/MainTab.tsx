@@ -12,7 +12,9 @@ export interface MainTabProps  {
 }
 
 export interface MainTabConnectProps {
-    pendingTodos: TodosTSTypes.Todo[]
+    pendingTodos: TodosTSTypes.Todo[],
+    TaskTitle : string,
+    maxTodoIndex: number
 }
 
 export interface MainTabDispatchProps {
@@ -72,15 +74,15 @@ export class MainTab extends React.Component<MainTabFullProps, any> {
     }
     return (
         <View style={{flex: 1,flexDirection: 'column'}}>
-            <ScrollView keyboardShouldPersistTaps="handled" >
+            <View style={{justifyContent: 'flex-start', marginBottom: 10}}>
                 <TodoInput
                     inputValue={this.props.TaskTitle}
                     inputChange={this.inputChange}
                 />
-              <View>
-                <TodoList {...todosListModel} />
-              </View>
                 <TodoButton submitTodo={this.submitTodo} />
+            </View>
+            <ScrollView keyboardShouldPersistTaps="handled" >
+                <TodoList {...todosListModel} />
             </ScrollView>
         </View>
     )
@@ -91,7 +93,8 @@ const mapStateToProps = (state: any /*, ownProps?: Props */): MainTabConnectProp
     debugger;
     const currentProps: MainTabConnectProps = Object.assign({}, this.props,  {
         pendingTodos: state.todos.pendingTodos,
-        maxTodoIndex: state.todos.maxTodoIndex
+        maxTodoIndex: state.todos.maxTodoIndex,
+        TaskTitle: state.todos.inputValue
     })
   return currentProps
 }

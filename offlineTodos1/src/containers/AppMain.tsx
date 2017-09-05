@@ -26,7 +26,6 @@ class AppMain extends Component<IAppProps, any> {
     */
 
     render() {
-        debugger;
         // if (this.state.isLoading) return undefined
 
         return(

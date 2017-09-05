@@ -12,6 +12,7 @@ export interface DeleteTabProps  {
 export interface DeleteTabConnectProps {
   deletedTodos: TodosTSTypes.Todo[],
   maxTodoIndex: number,
+    TaskTitle: string
 }
 
 export interface DeleteTabDispatchProps {
@@ -52,7 +53,8 @@ export class DeleteTab extends React.Component<DeleteTabFullProps, any> {
 const mapStateToProps = (state: any /*, ownProps?: Props */): DeleteTabConnectProps => {
   const currentProps: DeleteTabConnectProps = Object.assign({}, this.props,  {
     deletedTodos: state.todos.deletedTodos,
-    maxTodoIndex: state.todos.maxTodoIndex
+    maxTodoIndex: state.todos.maxTodoIndex,
+      TaskTitle: state.todos.inputValue
   })
   return currentProps
 }

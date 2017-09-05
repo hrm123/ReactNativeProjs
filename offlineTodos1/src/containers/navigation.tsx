@@ -76,7 +76,6 @@ export class AppWithNavigationState extends React.Component<any, any> {
     }
 
     public render(): JSX.Element {
-        debugger;
         let navHlprs = addNavigationHelpers({ dispatch:this.props.dispatch, state: this.props.nav });
         return (
             <MainNavigation navigation={navHlprs} screenProps={ {'uuid': '123'} }/>
