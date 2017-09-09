@@ -46,7 +46,8 @@ class MainTab extends React.Component<MainTabFullProps, any> {
     const todosListModel: TodosTSTypes.TodoListModel  = {
       todos : this.props.pendingTodos,
       toggleComplete: this.toggleComplete,
-      deleteTodo: this.deleteTask
+      deleteTodo: this.deleteTask,
+        reopenTodo: undefined
     }
     return (
       <View>

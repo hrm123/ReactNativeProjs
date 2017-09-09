@@ -1,17 +1,17 @@
 import React from 'react'
-import { mount, render, shallow } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import { Text } from 'react-native'
 import renderer from 'react-test-renderer'
 import Todo from '../components/Todo'
 import TodoButton from '../components/TodoButton'
-import TodosTsTypes from '../types/todoTypes'
+import * as TodosTsTypes from '../types/todoTypes'
 
 let global: any
 
 describe('>>>T O D O S COMPONENT -- tests', () => {
     let wrapper
     let fn2 = jest.fn()  // (taskId: number) => { console.log(taskId)}
-    let onPress: TodosTsTypes.PressFn = () => { console.log('onPress called')}
+    let onPress: TodosTsTypes.PressFn = (cbParams: Array<string>) => { console.log(cbParams)}
     let todoModel: TodosTsTypes.TodoModel = {
         deleteTodo: fn2,
         toggleComplete: fn2,
@@ -27,9 +27,10 @@ describe('>>>T O D O S COMPONENT -- tests', () => {
     beforeEach(() => {
       let jsdom = require('jsdom').jsdom
       global.document = jsdom('')
-      global.window = document.defaultView
+        global.window = global.document.parentWindow
+      // global.window = document.defaultView
       global.mount = mount
-      global.render = render
+      // global.render = render
       global.shallow = shallow
       Object.keys(document.defaultView).forEach((property) => {
         if (typeof global[property] === 'undefined') {
@@ -62,10 +63,11 @@ describe('>>>T O D O S COMPONENT -- tests', () => {
             expect(todoButtons).toHaveLength(2)
             //console.log(todoButtons)
             //console.log(todoButtons.first().props())
-            let doneButtonState: TodosTsTypes.TodoButtonModel = {name: 'Done', onPress: onPress, complete : false}
-            let deleteButtonState: TodosTsTypes.TodoButtonModel = {name: 'Delete', onPress: onPress, complete : false}
+            let cbParams1: Array<string> = ["1"]
+            let doneButtonState: TodosTsTypes.TodoButtonModel = {name: 'Done', callback: onPress, customCallbackData: cbParams1}
+            let cbParams2: Array<string> = ["2"]
+            let deleteButtonState: TodosTsTypes.TodoButtonModel = {name: 'Delete', callback: onPress, customCallbackData: cbParams2}
             expect(todoButtons.first().props().name).toEqual(doneButtonState.name)
-            expect(todoButtons.first().props().complete).toEqual(doneButtonState.complete)
             expect(todoButtons.at(1).props().name).toEqual(deleteButtonState.name)
             //expect(todoButtons.at(1).props().onPress.getClass().equals(onPress.getClass())).toBeTruthy()
 

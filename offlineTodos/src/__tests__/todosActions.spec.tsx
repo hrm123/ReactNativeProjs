@@ -1,6 +1,6 @@
 import * as TodosActionsTypes from '../actions/actionTypes'
 import  * as TodosActions from '../actions/todosActions'
-import TodosTsTypes from '../types/todoTypes'
+import * as TodosTsTypes from '../types/todoTypes'
 import * as Mocks from './mocks'
 // import initialState from '../reducers/initialState'
 

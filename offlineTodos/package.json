@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest",
+    "test": "npm run build && jest",
     "tsc": "tsc",
     "clean": "rimraf artifacts",
     "build": "npm run clean && npm run tsc -- ",
@@ -57,6 +57,9 @@
       "ts",
       "tsx",
       "js"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation)"
     ],
     "collectCoverageFrom": [
       "artifacts/**/*.js",

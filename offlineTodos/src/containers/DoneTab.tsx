@@ -28,8 +28,9 @@ class DoneTab extends React.Component<DoneTabFullProps, any> {
   public render(): JSX.Element {
     const todosListModel: TodosTSTypes.TodoListModel  = {
       todos : this.props.completedTodos,
-      toggleComplete : null,
-      deleteTodo : null
+      toggleComplete : undefined,
+      deleteTodo : undefined,
+      reopenTodo: undefined
     }
     return (
         <View>
@@ -41,7 +42,7 @@ class DoneTab extends React.Component<DoneTabFullProps, any> {
 
 const mapStateToProps = (state: TodosTSTypes.TodosState /*, ownProps?: Props */): DoneTabConnectProps => {
   const currentProps: DoneTabConnectProps = Object.assign(this.props,  {
-    pendingTodos: state.pendingTodos,
+    completedTodos: state.completedTodos,
     maxTodoIndex: state.maxTodoIndex
   })
   return currentProps
