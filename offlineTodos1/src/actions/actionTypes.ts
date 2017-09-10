@@ -28,6 +28,10 @@ export const CHANGE_TODO_TYPE: CHANGE_TODO_TYPE = 'App/CHANGE_TODO_TYPE'
 export type REHYDRATE = 'persist/REHYDRATE'
 export const REHYDRATE: REHYDRATE = 'persist/REHYDRATE'
 
+export type SETTINGS_CHANGE = 'App/SETTINGS_CHANGE'
+export const SETTINGS_CHANGE: SETTINGS_CHANGE = 'App/SETTINGS_CHANGE'
+
+
 export type OtherAction = { type: '' }
 export type ActionLoadTodosSuccess = {type: LOAD_TODOS_SUCCESS, todos: TodosTsTypes.TodosState}
 export type ActionTaskTitleChanged = {type: TASK_TITLE_CHANGED, newTitle: string}
@@ -36,6 +40,7 @@ export type ActionEditTodo = {type: EDIT_TODOS, todo: TodosTsTypes.Todo}
 export type ActionCompleteTodo = {type: COMPLETE_TODOS, todo: TodosTsTypes.Todo}
 export type ActionDeleteTodo = {type: DELETE_TODOS, todo: TodosTsTypes.Todo}
 export type ActionTodoTypeChange = {type: CHANGE_TODO_TYPE, todo: TodosTsTypes.Todo}
+export type ActionSetingsChange = {type: SETTINGS_CHANGE, settings: TodosTsTypes.SettingsState}
 export type ActionReHydrate = {type: REHYDRATE, payload: TodosTsTypes.TodosState}
 export type TodosBaseActions =  ActionLoadTodosSuccess |
                             ActionTaskTitleChanged |
@@ -45,4 +50,5 @@ export type TodosBaseActions =  ActionLoadTodosSuccess |
                             ActionDeleteTodo |
                             ActionTodoTypeChange |
                             ActionReHydrate |
-                            OtherAction
+                            OtherAction |
+                            ActionSetingsChange

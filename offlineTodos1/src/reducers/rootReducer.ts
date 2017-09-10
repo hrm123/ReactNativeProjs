@@ -1,8 +1,10 @@
 
 import {combineReducers} from 'redux'
 import todos from './todosReducer'
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions } from 'react-navigation'
 import {MainNavigation}  from '../containers/navigation'
+import settings from './settingsReducer'
+
 // import DeviceInfo from 'react-native-device-info';
 
 /*
@@ -44,7 +46,8 @@ function nav(state , action) {
 const rootReducer = combineReducers({
   // short hand property names
   todos,
-    nav
+    nav,
+  settings
 })
 
 export default rootReducer

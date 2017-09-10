@@ -7,6 +7,7 @@ import {
   import FirstScreen from './MainTab'
   import SecondScreen from './DeleteTab'
   import ThirdScreen from './DoneTab'
+  import FourthScreen from './settings'
 
 export const defaultTabs = {
     labelStyle: {
@@ -37,6 +38,10 @@ export const BottomTabs = TabNavigator({
     ThirdTab: {
       screen: ThirdScreen,
         navigationOptions: { title: 'Done' }
+    },
+    FourthTab: {
+        screen: FourthScreen,
+        navigationOptions: { title: 'Settings' }
     }
   },
   {
@@ -55,20 +60,6 @@ export const MainNavigation = StackNavigator({
       mode: 'card',
       headerMode: 'none'
     })
-
-/*
-export const AppWithNavigationState = ({ dispatch, nav }) => {
-  debugger;
-    let navHlprs = addNavigationHelpers({ dispatch, state: nav });
-    return (
-        <MainNavigation navigation={navHlprs} screenProps={ {'uuid': nav.uuid} }/>
-    )
-}
-
-const mapStateToProps = state => ({
-    nav: state.nav
-})
-*/
 
 export class AppWithNavigationState extends React.Component<any, any> {
     constructor(props) {

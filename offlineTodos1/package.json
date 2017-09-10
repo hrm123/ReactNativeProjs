@@ -13,8 +13,10 @@
     "start:android": "npm run build && react-native run-android "
   },
   "dependencies": {
+    "moment": "https://registry.npmjs.org/moment/-/moment-2.18.1.tgz",
     "react": "16.0.0-alpha.12",
     "react-native": "0.48.0",
+    "react-native-calendar-datepicker": "^1.2.2",
     "react-native-device-info": "^0.11.0",
     "react-navigation": "^1.0.0-beta.11",
     "react-redux": "^5.0.6",

@@ -41,8 +41,14 @@
         maxTodoIndex: number
     }
 
+    export interface SettingsState  {
+        EncryptionSet: boolean,
+        UserUnlocked: boolean,
+        LookupPeriod: string
+    }
     export interface AppState  {
-        todos: TodosState
+        todos: TodosState,
+        settings: SettingsState
     }
 
     export type TodoModel = {
