@@ -1,5 +1,5 @@
 import initialState from './initialState'
-// import {REHYDRATE} from 'redux-persist/constants'
+import {REHYDRATE} from 'redux-persist/constants'
 import * as TodosTsActionTypes from '../actions/actionTypes'
 import * as TodosTsTypes from '../types/todoTypes'
 
@@ -31,20 +31,14 @@ export default function todosReducer(currentState: TodosTsTypes.TodosState = ini
       return Object.assign({}, currentState, { pendingTodos :  newPendingTodos1, deletedTodos: newDeletedTodos  })
     case TodosTsActionTypes.CHANGE_TODO_TYPE:
       return Object.assign({}, currentState, { taskStatus: action.todo.taskType })
-    case TodosTsActionTypes.REHYDRATE:
-      const savedState = action.payload.pendingTodos
-      if (savedState) {
+    case REHYDRATE:
+        debugger
+      const savedState = action.payload;
+      if (savedState.maxTodoIndex) {
         return {...currentState, ...savedState}
       } else {
         return currentState
     }
-    /*
-    case REHYDRATE:
-      debugger
-      var incoming = action.payload.myReducer
-      if (incoming) return {...state, ...incoming, specialKey: processSpecial(incoming.specialKey)}
-      return state
-      */
     default:
       return currentState
   }
