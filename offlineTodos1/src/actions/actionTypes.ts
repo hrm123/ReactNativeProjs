@@ -41,7 +41,7 @@ export type ActionCompleteTodo = {type: COMPLETE_TODOS, todo: TodosTsTypes.Todo}
 export type ActionDeleteTodo = {type: DELETE_TODOS, todo: TodosTsTypes.Todo}
 export type ActionTodoTypeChange = {type: CHANGE_TODO_TYPE, todo: TodosTsTypes.Todo}
 export type ActionSetingsChange = {type: SETTINGS_CHANGE, settings: TodosTsTypes.SettingsState}
-export type ActionReHydrate = {type: REHYDRATE, payload: TodosTsTypes.TodosState}
+export type ActionReHydrate = {type: REHYDRATE, payload: TodosTsTypes.AppState}
 export type TodosBaseActions =  ActionLoadTodosSuccess |
                             ActionTaskTitleChanged |
                             ActionAddTodo |
