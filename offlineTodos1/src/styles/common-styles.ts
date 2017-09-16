@@ -42,5 +42,19 @@ export const styles = StyleSheet.create<any>({
         backgroundColor: '#ffffff',
         paddingLeft: 10,
         paddingRight: 10
-    } as ViewStyle
+    } as ViewStyle,
+    formGroup: {
+      flex: 1,
+        flexDirection: 'column'
+    },
+    formGroupRow: {
+      flex: 1,
+        flexDirection: 'row'
+    },
+    formRowLabel: {
+      flex: 3
+    },
+    formRowControl:{
+      flex: 7
+    }
 })

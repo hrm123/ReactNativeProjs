@@ -1395,6 +1395,11 @@
       "from": "react-native-calendar-datepicker@latest",
       "resolved": "https://registry.npmjs.org/react-native-calendar-datepicker/-/react-native-calendar-datepicker-1.2.2.tgz"
     },
+    "react-native-checkbox": {
+      "version": "1.2.0",
+      "from": "https://registry.npmjs.org/react-native-checkbox/-/react-native-checkbox-1.2.0.tgz",
+      "resolved": "https://registry.npmjs.org/react-native-checkbox/-/react-native-checkbox-1.2.0.tgz"
+    },
     "react-native-device-info": {
       "version": "0.11.0",
       "from": "react-native-device-info@latest",
