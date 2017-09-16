@@ -11,7 +11,8 @@ export interface SettingsTabProps  {
 }
 
 export interface SettingsTabConnectProps {
-    LookupPeriod: Date
+    LookupPeriodStart: string,
+    LookupPeriodEnd: string
 }
 
 export interface SettingsTabDispatchProps {
@@ -20,19 +21,31 @@ export interface SettingsTabDispatchProps {
 
 type SettingsTabFullProps = SettingsTabProps & SettingsTabDispatchProps & SettingsTabConnectProps & TodosTSTypes.ITabCommonConnectProps
 
-export class SettingsTab extends React.Component<SettingsTabFullProps, any> {
+export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTypes.SettingsState> {
     constructor(props: SettingsTabFullProps) {
         super(props)
+        this.state = {
+            EncryptionSet: false,
+            UserUnlocked: false,
+            LookupPeriodStart: Moment().add(-2, 'years').startOf('day').toDate(),
+            LookupPeriodEnd: Moment().add(10, 'years').startOf('day').toDate()
+        }
     }
 
     public render(): JSX.Element {
         return (
             <View>
                 <Calendar
-                    onChange={(date) => this.setState({date})}
-                    selected={this.state.date}
+                    onChange={(date) => this.setState({LookupPeriodStart: date})}
+                    selected={this.state.LookupPeriodStart}
                       minDate={Moment().add(-2, 'years').startOf('day')}
                       maxDate={Moment().add(10, 'years').startOf('day')}
+                />
+                <Calendar
+                    onChange={(date) => this.setState({LookupPeriodEnd : date})}
+                    selected={this.state.LookupPeriodEnd}
+                    minDate={Moment().add(-2, 'years').startOf('day')}
+                    maxDate={Moment().add(10, 'years').startOf('day')}
                 />
             </View>
         )
@@ -40,11 +53,12 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, any> {
 }
 
 
-const mapStateToProps = (state: any /*, ownProps?: Props */): SettingsTabConnectProps => {
+const mapStateToProps = (state: TodosTSTypes.SettingsState /*, ownProps?: Props */): SettingsTabConnectProps => {
     const currentProps: SettingsTabConnectProps = Object.assign({}, this.props,  {
-        pendingTodos: state.todos.pendingTodos,
-        maxTodoIndex: state.todos.maxTodoIndex,
-        TaskTitle: state.todos.inputValue
+        EncryptionSet: state.EncryptionSet,
+        UserUnlocked: state.UserUnlocked,
+        LookupPeriodStart: state.LookupPeriodStart,
+        LookupPeriodEnd: state.LookupPeriodEnd
     })
     return currentProps
 }

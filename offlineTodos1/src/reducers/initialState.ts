@@ -29,7 +29,8 @@ const initialTodosState: TodosTsTypes.TodosState = {
 const initialSettings: TodosTsTypes.SettingsState ={
      UserUnlocked: false,
     EncryptionSet: false,
-    LookupPeriod : Moment().add(-2, 'years').startOf('day').format("MM/DD/YYYY")
+    LookupPeriodStart : Moment().add(-2, 'years').startOf('day').toDate(), // .format("MM/DD/YYYY"),
+    LookupPeriodEnd : Moment().add(-2, 'years').startOf('day').toDate()
 }
 const initialState: TodosTsTypes.AppState =  {
     todos: initialTodosState,

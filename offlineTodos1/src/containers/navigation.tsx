@@ -26,31 +26,61 @@ export const defaultTabs = {
     }
   }
 
-export const BottomTabs = TabNavigator({
-    FirstTab: {
-      screen: FirstScreen,
-        navigationOptions: { title: 'Pending' }
-    },
-    SecondTab: {
-      screen: SecondScreen,
-        navigationOptions: { title: 'Deleted' }
-    },
-    ThirdTab: {
-      screen: ThirdScreen,
-        navigationOptions: { title: 'Done' }
-    },
-    FourthTab: {
-        screen: FourthScreen,
-        navigationOptions: { title: 'Settings' }
+
+export class BottomTabs extends React.Component<any, any> {
+    constructor(props) {
+        super(props)
     }
-  },
-  {
-    tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom',
-    tabBarOptions: {
-      ...defaultTabs
+
+    getAuthTabs = () => {
+        let authRoutes: {[id: string] : any} = {}
+        authRoutes["FirstTab"] = {
+                    screen: FirstScreen,
+                    navigationOptions: { title: 'Pending' }
+                }
+        authRoutes["SecondTab"] = {
+                    screen: SecondScreen,
+                    navigationOptions: { title: 'Deleted' }
+                }
+        authRoutes["ThirdTab"] =  {
+                    screen: ThirdScreen,
+                    navigationOptions: { title: 'Done' }
+                }
+        authRoutes["FourthTab"] =  {
+                    screen: FourthScreen,
+                    navigationOptions: {title: 'Settings'}
+
+                }
+                return authRoutes
+            }
+
+    getUnauthTabs = () => {
+        let unauthRoutes: {[id: string] : any} = {}
+        unauthRoutes["FourthTab"] = {
+            screen: FourthScreen,
+            navigationOptions: {title: 'Settings'}
+
+        }
+        return unauthRoutes
     }
-  })
+
+
+    public render(): JSX.Element {
+        let {authenticated} = this.props.screenProps;
+        const Tabs = TabNavigator(
+                    authenticated ? this.getAuthTabs() : this.getUnauthTabs()
+                ,
+                {
+                    tabBarComponent: TabBarBottom,
+                    tabBarPosition: 'bottom',
+                    tabBarOptions: {
+                        ...defaultTabs
+                    }
+                })
+        return (<Tabs />)
+    }
+
+}
 
 export const MainNavigation = StackNavigator({
   App: {
@@ -69,17 +99,15 @@ export class AppWithNavigationState extends React.Component<any, any> {
     public render(): JSX.Element {
         let navHlprs = addNavigationHelpers({ dispatch:this.props.dispatch, state: this.props.nav });
         return (
-            <MainNavigation navigation={navHlprs} screenProps={ {'uuid': '123'} }/>
+            <MainNavigation navigation={navHlprs}  screenProps={ {'uuid': '123', authenticated: false } }/>
         )
     }
 
 }
 
-
-
-const mapStateToProps = state => ({
-    nav: state.nav
-})
+const mapStateToProps = state => {
+    return Object.assign({} , {nav: state.nav}, {authenticated : state.authenticated})
+}
 
 
 export default connect(
