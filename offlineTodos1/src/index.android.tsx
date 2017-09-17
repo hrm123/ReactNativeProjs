@@ -30,7 +30,6 @@ export default class offlineTodos1 extends Component<Props, State> {
     }
     render() {
         if(this.state.rehydrated) {
-            debugger
             console.log(store.getState());
             return (
                 <AppMain todoStore={store}/>

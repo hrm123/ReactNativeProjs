@@ -4,10 +4,11 @@ import { connect } from 'react-redux'
 import * as TodosTSTypes from '../types/todoTypes'
 const todosActions =  require('../actions/todosActions')
 import * as Redux from 'redux'
-import Calendar from 'react-native-calendar-datepicker'
+import DatePicker from './datepicker'
 import Moment from 'moment'
 import {styles} from '../styles/common-styles.js'
 import CheckBox from 'react-native-checkbox'
+import Button from '../components/Button'
 
 export interface SettingsTabProps  {
 }
@@ -35,6 +36,11 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTy
         }
     }
 
+    submitTodo = () => {
+        // console.log('button1')
+        this.props.onSettingsChanged(this.state)
+    }
+
     public render(): JSX.Element {
         let passwordUI = <View style={styles.formGroupRow}>
             <View style={styles.formRowLabel}>
@@ -52,6 +58,7 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTy
         </View>;
 
         return (
+        <View style={{flex:1}}>
             <View style={styles.formGroup}>
                 <View style={styles.formGroupRow}>
                     <View style={styles.formRowLabel}>
@@ -67,12 +74,7 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTy
                         <Text>Todos since</Text>
                     </View>
                     <View style={styles.formRowControl}>
-                        <Calendar
-                            onChange={(date) => this.setState({LookupPeriodStart: date})}
-                            selected={this.state.LookupPeriodStart}
-                              minDate={Moment().add(-2, 'years').startOf('day')}
-                              maxDate={Moment().add(10, 'years').startOf('day')}
-                        />
+                        <DatePicker placeholderText="Enter start date"/>
                     </View>
                 </View>
                 <View style={styles.formGroupRow}>
@@ -80,15 +82,12 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTy
                     <Text>Todos till</Text>
                     </View>
                     <View style={styles.formRowControl}>
-                        <Calendar
-                            onChange={(date) => this.setState({LookupPeriodEnd : date})}
-                            selected={this.state.LookupPeriodEnd}
-                            minDate={Moment().add(-2, 'years').startOf('day')}
-                            maxDate={Moment().add(10, 'years').startOf('day')}
-                        />
+                        <DatePicker placeholderText="Enter end date" />
                     </View>
                 </View>
             </View>
+            <Button submitTodo={this.submitTodo} />
+        </View>
         )
     }
 }

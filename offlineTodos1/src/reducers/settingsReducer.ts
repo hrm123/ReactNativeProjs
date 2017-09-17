@@ -10,7 +10,6 @@ export default function settingsReducer(currentState: TodosTsTypes.SettingsState
             debugger;
             return Object.assign({}, currentState, action.settings)
         case REHYDRATE:
-            debugger
             const savedState = action.payload;
             if (savedState.todos && savedState.todos.maxTodoIndex) {
                 return {...currentState, ...savedState.settings}

@@ -45,7 +45,9 @@ export const styles = StyleSheet.create<any>({
     } as ViewStyle,
     formGroup: {
       flex: 1,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        paddingLeft: 4,
+        paddingRight: 4
     },
     formGroupRow: {
       flex: 1,

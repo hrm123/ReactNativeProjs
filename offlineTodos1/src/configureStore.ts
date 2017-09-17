@@ -11,7 +11,6 @@ import initialState from './reducers/initialState'
 
 
 const configureStore: any = () => {
-    debugger
     const logger = createLogger({})
     const middlewares = [thunk ]
 
