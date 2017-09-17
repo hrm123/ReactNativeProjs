@@ -73,5 +73,10 @@ export const styles = StyleSheet.create<any>({
         position: "absolute",
         top: 0,
         left: 0,
+    },
+    calContainer : {
+        flexGrow: 1,
+        paddingTop: 40,
+        backgroundColor: '#F5FCFF',
     }
 })
