@@ -48,20 +48,30 @@ export const styles = StyleSheet.create<any>({
         flexDirection: 'column',
         paddingLeft: 4,
         paddingRight: 4,
-        justifyContent: "space-around",
-        alignItems: "stretch"
+        justifyContent: "center",
+        alignItems: "center"
     },
     formGroupRow: {
       flex: 1,
         flexDirection: 'row',
         justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: '#374046'
+        alignItems: "center"
+    },
+    formGroupRow1: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: "center",
+        alignItems: "center"
     },
     formRowLabel: {
       flex: 3
     },
     formRowControl:{
       flex: 7
+    },
+    calendar: {
+        position: "absolute",
+        top: 0,
+        left: 0,
     }
 })

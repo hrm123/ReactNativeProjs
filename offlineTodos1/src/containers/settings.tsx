@@ -41,7 +41,7 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTy
     }
 
     public render(): JSX.Element {
-        let passwordUI = <View style={styles.formGroupRow}>
+        let passwordUI = <View style={styles.formGroupRow1}>
             <View style={styles.formRowLabel}>
                 <Text>Password</Text>
             </View>
@@ -75,7 +75,7 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTy
                     <DatePicker placeholderText="Enter end date" />
                 </View>
             </View>
-            <View>
+            <View style={{flex:5, alignItems:"flex-end"}}>
                 <Button submitTodo={this.submitTodo} />
             </View>
         </View>
