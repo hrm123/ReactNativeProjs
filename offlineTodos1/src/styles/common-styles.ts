@@ -44,14 +44,19 @@ export const styles = StyleSheet.create<any>({
         paddingRight: 10
     } as ViewStyle,
     formGroup: {
-      flex: 1,
+      flex:1,
         flexDirection: 'column',
         paddingLeft: 4,
-        paddingRight: 4
+        paddingRight: 4,
+        justifyContent: "space-around",
+        alignItems: "stretch"
     },
     formGroupRow: {
       flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: '#374046'
     },
     formRowLabel: {
       flex: 3

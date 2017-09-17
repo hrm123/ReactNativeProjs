@@ -7,7 +7,6 @@ import * as Redux from 'redux'
 import DatePicker from './datepicker'
 import Moment from 'moment'
 import {styles} from '../styles/common-styles.js'
-import CheckBox from 'react-native-checkbox'
 import Button from '../components/Button'
 
 export interface SettingsTabProps  {
@@ -58,36 +57,30 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTy
         </View>;
 
         return (
-        <View style={{flex:1}}>
-            <View style={styles.formGroup}>
-                <View style={styles.formGroupRow}>
-                    <View style={styles.formRowLabel}>
-                        <Text>Enable Authentication</Text>
-                    </View>
-                    <View style={styles.formRowControl}>
-                        <CheckBox checked={false} onChange={(chkd) => this.setState({EncryptionSet: chkd})} />
-                    </View>
+        <View style={styles.formGroup}>
+            {passwordUI}
+            <View style={styles.formGroupRow}>
+                <View style={styles.formRowLabel}>
+                    <Text>Todos since</Text>
                 </View>
-                {passwordUI}
-                <View style={styles.formGroupRow}>
-                    <View style={styles.formRowLabel}>
-                        <Text>Todos since</Text>
-                    </View>
-                    <View style={styles.formRowControl}>
-                        <DatePicker placeholderText="Enter start date"/>
-                    </View>
-                </View>
-                <View style={styles.formGroupRow}>
-                    <View style={styles.formRowLabel}>
-                    <Text>Todos till</Text>
-                    </View>
-                    <View style={styles.formRowControl}>
-                        <DatePicker placeholderText="Enter end date" />
-                    </View>
+                <View style={styles.formRowControl}>
+                    <DatePicker placeholderText="Enter start date"/>
                 </View>
             </View>
-            <Button submitTodo={this.submitTodo} />
+            <View style={styles.formGroupRow}>
+                <View style={styles.formRowLabel}>
+                <Text>Todos till</Text>
+                </View>
+                <View style={styles.formRowControl}>
+                    <DatePicker placeholderText="Enter end date" />
+                </View>
+            </View>
+            <View>
+                <Button submitTodo={this.submitTodo} />
+            </View>
         </View>
+
+
         )
     }
 }
