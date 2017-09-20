@@ -46,7 +46,8 @@
         UserUnlocked: boolean,
         LookupPeriodStart: Date,
         LookupPeriodEnd: Date,
-        Password: string
+        Password: string,
+        passwordError: string
     }
     export interface AppState  {
         todos: TodosState,

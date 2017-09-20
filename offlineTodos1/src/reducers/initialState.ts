@@ -31,7 +31,8 @@ const initialSettings: TodosTsTypes.SettingsState ={
     EncryptionSet: false,
     LookupPeriodStart : Moment().add(-2, 'years').startOf('day').toDate(), // .format("MM/DD/YYYY"),
     LookupPeriodEnd : Moment().add(-2, 'years').startOf('day').toDate(),
-    Password: ""
+    Password: "",
+    passwordError: ""
 }
 const initialState: TodosTsTypes.AppState =  {
     todos: initialTodosState,

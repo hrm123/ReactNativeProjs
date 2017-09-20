@@ -14,7 +14,8 @@ export interface SettingsTabProps  {
 
 export interface SettingsTabConnectProps {
     LookupPeriodStart: string,
-    LookupPeriodEnd: string
+    LookupPeriodEnd: string,
+    Password: string
 }
 
 export interface SettingsTabDispatchProps {
@@ -27,9 +28,10 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTy
     constructor(props: SettingsTabFullProps) {
         super(props)
         this.state = {
-            EncryptionSet: false,
+            EncryptionSet: true,
             UserUnlocked: false,
             Password: "",
+            passwordError: "",
             LookupPeriodStart: Moment().add(-2, 'years').startOf('day').toDate(),
             LookupPeriodEnd: Moment().add(10, 'years').startOf('day').toDate()
         }
@@ -37,22 +39,32 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTy
 
     submitTodo = () => {
         // console.log('button1')
-        this.props.onSettingsChanged(this.state)
+        if(this.state.Password && this.state.Password.trim().length >0) {
+            debugger;
+            this.setState({passwordError: "", UserUnlocked: true})
+            let newState = Object.assign({}, this.state, {passwordError: "", UserUnlocked: true})
+            this.props.onSettingsChanged(newState)
+        }
+        else{
+            this.setState({passwordError: "Invalid password"})
+        }
     }
 
     public render(): JSX.Element {
+
+        let passwordError =  <Text style={{color: "red"}}>{this.state.passwordError}</Text>
         let passwordUI = <View style={styles.formGroupRow1}>
             <View style={styles.formRowLabel}>
                 <Text>Password</Text>
             </View>
             <View style={styles.formRowControl}>
                 <TextInput
-                    value={this.state.Password}
+                    value={this.props.Password}
                     style={styles.input}
-                    placeholder='Enter password?'
+                    placeholder='Enter password'
                     selectionColor='#666666'
                     onChangeText={ (text) => this.setState({Password : text})}
-                />
+                />{passwordError}
             </View>
         </View>;
 
@@ -91,7 +103,8 @@ const mapStateToProps = (state: TodosTSTypes.SettingsState /*, ownProps?: Props 
         EncryptionSet: state.EncryptionSet,
         UserUnlocked: state.UserUnlocked,
         LookupPeriodStart: state.LookupPeriodStart,
-        LookupPeriodEnd: state.LookupPeriodEnd
+        LookupPeriodEnd: state.LookupPeriodEnd,
+        Password: state.Password
     })
     return currentProps
 }
@@ -99,6 +112,7 @@ const mapStateToProps = (state: TodosTSTypes.SettingsState /*, ownProps?: Props 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<any>): SettingsTabDispatchProps => {
     return {
         onSettingsChanged: (newSettings) => {
+            debugger;
             // console.log('in onSubmitClick')
             dispatch(todosActions.settingsChanged(newSettings))
         }

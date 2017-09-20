@@ -11,6 +11,11 @@ export default function settingsReducer(currentState: TodosTsTypes.SettingsState
             return Object.assign({}, currentState, action.settings)
         case REHYDRATE:
             const savedState = action.payload;
+            debugger;
+            if(savedState && savedState.settings)
+            {
+                savedState.settings.UserUnlocked = false; // make user reenter password
+            }
             if (savedState.todos && savedState.todos.maxTodoIndex) {
                 return {...currentState, ...savedState.settings}
             } else {

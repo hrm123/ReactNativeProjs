@@ -458,6 +458,11 @@
     "cryptiles": {
       "version": "2.0.5"
     },
+    "crypto-js": {
+      "version": "3.1.9-1",
+      "from": "crypto-js@latest",
+      "resolved": "https://registry.npmjs.org/crypto-js/-/crypto-js-3.1.9-1.tgz"
+    },
     "csrf": {
       "version": "3.0.6",
       "dependencies": {
@@ -1299,6 +1304,11 @@
         }
       }
     },
+    "randombytes": {
+      "version": "2.0.5",
+      "from": "randombytes@>=2.0.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/randombytes/-/randombytes-2.0.5.tgz"
+    },
     "range-parser": {
       "version": "1.0.3"
     },
@@ -1424,6 +1434,11 @@
       "version": "0.0.65",
       "from": "react-native-tab-view@>=0.0.65 <0.0.66",
       "resolved": "https://registry.npmjs.org/react-native-tab-view/-/react-native-tab-view-0.0.65.tgz"
+    },
+    "react-native-uuid": {
+      "version": "1.4.9",
+      "from": "react-native-uuid@latest",
+      "resolved": "https://registry.npmjs.org/react-native-uuid/-/react-native-uuid-1.4.9.tgz"
     },
     "react-navigation": {
       "version": "1.0.0-beta.11",

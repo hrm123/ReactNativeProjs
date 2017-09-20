@@ -99,14 +99,14 @@ export class AppWithNavigationState extends React.Component<any, any> {
     public render(): JSX.Element {
         let navHlprs = addNavigationHelpers({ dispatch:this.props.dispatch, state: this.props.nav });
         return (
-            <MainNavigation navigation={navHlprs}  screenProps={ {'uuid': '123', authenticated: false } }/>
+            <MainNavigation navigation={navHlprs}  screenProps={ {'uuid': '123', authenticated: this.props.authenticated } }/>
         )
     }
 
 }
 
 const mapStateToProps = state => {
-    return Object.assign({} , {nav: state.nav}, {authenticated : state.authenticated})
+    return Object.assign({} , {nav: state.nav}, {authenticated : state.settings.UserUnlocked})
 }
 
 
