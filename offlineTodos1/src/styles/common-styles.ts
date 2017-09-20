@@ -67,7 +67,7 @@ export const styles = StyleSheet.create<any>({
       flex: 3
     },
     formRowControl:{
-      flex: 7
+        flex: 7
     },
     calendar: {
         position: "absolute",

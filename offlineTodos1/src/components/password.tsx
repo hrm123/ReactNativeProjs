@@ -15,7 +15,7 @@ export interface PasswordState  {
 }
 
 
-class password extends React.Component<PasswordProps, PasswordState> {
+class passwordUI extends React.Component<PasswordProps, PasswordState> {
 
   constructor(props){
     super(props);
@@ -66,13 +66,13 @@ class password extends React.Component<PasswordProps, PasswordState> {
                     </View>
                     <View style={styles.formGroupRow}>
                         <View style={styles.formRowLabel}>
-                            <Text>Enter an Email ID to send the selected password to:</Text>
+                            <Text>Enter an Email ID (to send the selected password to):</Text>
                         </View>
                         <View style={styles.formRowControl}>
                             <TextInput
                                 value={this.state.EmailId}
                                 style={styles.input}
-                                placeholder='Enter a password'
+                                placeholder='Enter email id'
                                 selectionColor='#666666'
                                 onChangeText={ (text) => this.setState({EmailId : text})}
                             />
@@ -92,4 +92,4 @@ class password extends React.Component<PasswordProps, PasswordState> {
   }
 
 
-export default password;
+export default passwordUI;

@@ -7,7 +7,7 @@ import { AsyncStorage } from 'react-native' // we need to import AsyncStorage to
 import {  persistStore, createTransform } from 'redux-persist' // autoRehydrate
 // import './ReactotronConfig'
 import CryptoJS from 'crypto-js';
-import passwordUI from './components/password'
+import PasswordUI from './components/password'
 
 interface Props {
 
@@ -18,6 +18,8 @@ interface State {
     password : string
 }
 
+let store
+
 export default class offlineTodos1 extends Component<Props, State> {
     constructor(){
         super()
@@ -25,15 +27,17 @@ export default class offlineTodos1 extends Component<Props, State> {
     }
 
     loadStoreAndPersist = () => {
-        const store = configureStore()
+        store = configureStore()
         const encrypt = createTransform(
             (inboundState, key) => {
+                debugger;
                 if (!inboundState) return inboundState;
                 const cryptedText = CryptoJS.AES.encrypt(JSON.stringify(inboundState), key);
 
                 return cryptedText.toString();
             },
             (outboundState, key) => {
+                debugger;
                 if (!outboundState) return outboundState;
                 const bytes = CryptoJS.AES.decrypt(outboundState, key);
                 const decrypted = bytes.toString(CryptoJS.enc.Utf8);
@@ -50,7 +54,8 @@ export default class offlineTodos1 extends Component<Props, State> {
     }
 
     passwordSet = (pwd) => {
-        this.setState({"Password": pwd, rehydrated: false})
+        debugger;
+        this.setState({password: pwd, rehydrated: false})
         this.loadStoreAndPersist()
     }
 
@@ -60,7 +65,6 @@ export default class offlineTodos1 extends Component<Props, State> {
 
     render() {
         if(this.state.rehydrated) {
-            console.log(store.getState());
             return (
                 <AppMain todoStore={store}/>
             )
@@ -68,7 +72,11 @@ export default class offlineTodos1 extends Component<Props, State> {
         else{
             if(this.state.password.length ==0)
             {
-                <passwordUI onPasswordSet={this.passwordSet} />
+                return (
+                    <View>
+                        <PasswordUI onPasswordSet={this.passwordSet} />
+                    </View>
+                )
 
             }
             else {
