@@ -10,10 +10,12 @@ import * as EnvironmentDetails from './environment'
 import initialState from './reducers/initialState'
 
 
-const configureStore: any = () => {
+const configureStore: any = (args) => {
     const logger = createLogger({})
     const middlewares = [thunk ]
-
+    debugger
+    initialState.settings.Password = args.pwd
+    initialState.settings.UserUnlocked = true
     if ( EnvironmentDetails.env === 'dev') {
         middlewares.push(logger)
         return  createStore(

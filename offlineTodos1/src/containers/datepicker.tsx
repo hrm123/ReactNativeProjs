@@ -14,7 +14,6 @@ export default class DatePicker extends Component<any, any> {
   }
 
   onClickDate = () => {
-      debugger;
       this.setState({selecting: true})
   }
   render() {
@@ -26,8 +25,6 @@ export default class DatePicker extends Component<any, any> {
           const LIGHT_GREY = '#F5F5F5';
 
           return (
-          // <View style={[styles.calendar, {zIndex:100000, flexGrow: 1, flex:1, backgroundColor: "cyan"}]}>
-
               <Modal
                   animationType="slide"
                   transparent={false}

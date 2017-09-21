@@ -1,5 +1,5 @@
 import React from 'react'
-import {Text, TextInput, View} from 'react-native'
+import {Text, View} from 'react-native'
 import { connect } from 'react-redux'
 import * as TodosTSTypes from '../types/todoTypes'
 const todosActions =  require('../actions/todosActions')
@@ -15,7 +15,9 @@ export interface SettingsTabProps  {
 export interface SettingsTabConnectProps {
     LookupPeriodStart: string,
     LookupPeriodEnd: string,
-    Password: string
+    Password: string,
+    EncryptionSet: boolean,
+    UserUnlocked: boolean
 }
 
 export interface SettingsTabDispatchProps {
@@ -29,42 +31,28 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTy
         super(props)
         this.state = {
             EncryptionSet: true,
-            UserUnlocked: false,
-            Password: "",
-            passwordError: "",
+            UserUnlocked: true,
             LookupPeriodStart: Moment().add(-2, 'years').startOf('day').toDate(),
-            LookupPeriodEnd: Moment().add(10, 'years').startOf('day').toDate()
+            LookupPeriodEnd: Moment().add(10, 'years').startOf('day').toDate(),
+            Password: ""
+
         }
     }
 
     submitTodo = () => {
-        // console.log('button1')
-        if(this.state.Password && this.state.Password.trim().length >0) {
-            debugger;
-            this.setState({passwordError: "", UserUnlocked: true})
-            let newState = Object.assign({}, this.state, {passwordError: "", UserUnlocked: true})
+            let newState = Object.assign({}, this.state)
             this.props.onSettingsChanged(newState)
-        }
-        else{
-            this.setState({passwordError: "Invalid password"})
-        }
+
     }
 
     public render(): JSX.Element {
 
-        let passwordError =  <Text style={{color: "red"}}>{this.state.passwordError}</Text>
         let passwordUI = <View style={styles.formGroupRow1}>
             <View style={styles.formRowLabel}>
                 <Text>Password</Text>
             </View>
             <View style={styles.formRowControl}>
-                <TextInput
-                    value={this.props.Password}
-                    style={styles.input}
-                    placeholder='Enter password'
-                    selectionColor='#666666'
-                    onChangeText={ (text) => this.setState({Password : text})}
-                />{passwordError}
+                <Text>{this.props.Password}</Text>
             </View>
         </View>;
 
@@ -84,7 +72,7 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTy
                 <Text>Todos till</Text>
                 </View>
                 <View style={styles.formRowControl}>
-                    <DatePicker placeholderText="Enter end date" />
+                    <DatePicker placeholderText="Enter end date"  />
                 </View>
             </View>
             <View style={{flex:5, alignItems:"flex-end"}}>
@@ -100,11 +88,11 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTy
 
 const mapStateToProps = (state: TodosTSTypes.SettingsState /*, ownProps?: Props */): SettingsTabConnectProps => {
     const currentProps: SettingsTabConnectProps = Object.assign({}, this.props,  {
-        EncryptionSet: state.EncryptionSet,
-        UserUnlocked: state.UserUnlocked,
-        LookupPeriodStart: state.LookupPeriodStart,
-        LookupPeriodEnd: state.LookupPeriodEnd,
-        Password: state.Password
+        EncryptionSet: state.settings.EncryptionSet,
+        UserUnlocked: state.settings.UserUnlocked,
+        LookupPeriodStart: state.settings.LookupPeriodStart,
+        LookupPeriodEnd: state.settings.LookupPeriodEnd,
+        Password: state.settings.Password
     })
     return currentProps
 }
@@ -112,7 +100,6 @@ const mapStateToProps = (state: TodosTSTypes.SettingsState /*, ownProps?: Props 
 const mapDispatchToProps = (dispatch: Redux.Dispatch<any>): SettingsTabDispatchProps => {
     return {
         onSettingsChanged: (newSettings) => {
-            debugger;
             // console.log('in onSubmitClick')
             dispatch(todosActions.settingsChanged(newSettings))
         }

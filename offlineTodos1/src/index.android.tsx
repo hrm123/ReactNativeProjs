@@ -23,21 +23,21 @@ let store
 export default class offlineTodos1 extends Component<Props, State> {
     constructor(){
         super()
-        this.state = {rehydrated: false, password : ""}
+        this.state = {rehydrated: false, password: ''}
     }
 
-    loadStoreAndPersist = () => {
-        store = configureStore()
+    loadStoreAndPersist = (password) => {
+        store = configureStore({pwd: password})
         const encrypt = createTransform(
             (inboundState, key) => {
-                debugger;
+                debugger
                 if (!inboundState) return inboundState;
                 const cryptedText = CryptoJS.AES.encrypt(JSON.stringify(inboundState), this.state.password + key);
 
                 return cryptedText.toString();
             },
             (outboundState, key) => {
-                debugger;
+                debugger
                 if (!outboundState) return outboundState;
                 const bytes = CryptoJS.AES.decrypt(outboundState, this.state.password + key);
                 const decrypted = bytes.toString(CryptoJS.enc.Utf8);
@@ -54,9 +54,8 @@ export default class offlineTodos1 extends Component<Props, State> {
     }
 
     passwordSet = (pwd) => {
-        debugger;
         this.setState({password: pwd, rehydrated: false})
-        this.loadStoreAndPersist()
+        this.loadStoreAndPersist(pwd)
     }
 
     componentWillMount(){

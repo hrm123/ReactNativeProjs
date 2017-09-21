@@ -28,9 +28,7 @@ class passwordUI extends React.Component<PasswordProps, PasswordState> {
   }
 
     onClickSubmit = () => {
-        debugger;
         if(this.state.SelectedPassword && this.state.SelectedPassword.trim().length >0) {
-            debugger;
             this.setState({passwordError: "", selected: true})
             this.props.onPasswordSet(this.state.SelectedPassword)
         }
