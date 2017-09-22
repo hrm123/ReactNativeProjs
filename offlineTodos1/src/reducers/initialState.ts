@@ -1,6 +1,6 @@
 
 import * as TodosTsTypes from '../types/todoTypes'
-
+import Moment from 'moment'
 const initialTodos: TodosTsTypes.Todo[] = [
     {
         CreateTime: undefined,
@@ -26,8 +26,16 @@ const initialTodosState: TodosTsTypes.TodosState = {
     inputValue: 'My first todo',
     maxTodoIndex: 2
 }
+const initialSettings: TodosTsTypes.SettingsState ={
+     UserUnlocked: false,
+    EncryptionSet: false,
+    LookupPeriodStart : Moment().add(-2, 'years').startOf('day').toDate(), // .format("MM/DD/YYYY"),
+    LookupPeriodEnd : Moment().add(-2, 'years').startOf('day').toDate(),
+    Password: ""
+}
 const initialState: TodosTsTypes.AppState =  {
-    todos: initialTodosState
+    todos: initialTodosState,
+    settings: initialSettings
 }
 
 

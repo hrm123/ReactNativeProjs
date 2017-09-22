@@ -56,6 +56,13 @@ export const todoTypeChanged: ThunkAction<void, {}, {todo: TodosTsTypes.Todo}> =
   }
 }
 
+export type settingsChanged = (settings) =>  ThunkAction<void, {}, {settings: TodosTsTypes.SettingsState}>
+export const settingsChanged: ThunkAction<void, {}, {settings: TodosTsTypes.SettingsState}>  = (settings) => {
+    return (dispatch) => {
+        dispatch( {type: ActionTypes.SETTINGS_CHANGE, settings})
+    }
+}
+
 export type TodosActions =
   loadTodosSuccess|
   AddTodos|
@@ -63,4 +70,5 @@ export type TodosActions =
   editTodos|
   deleteTodos|
   todoTypeChanged |
-  completeTodos
+  completeTodos |
+    settingsChanged

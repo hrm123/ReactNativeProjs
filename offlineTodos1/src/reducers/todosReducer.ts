@@ -32,10 +32,9 @@ export default function todosReducer(currentState: TodosTsTypes.TodosState = ini
     case TodosTsActionTypes.CHANGE_TODO_TYPE:
       return Object.assign({}, currentState, { taskStatus: action.todo.taskType })
     case REHYDRATE:
-        debugger
       const savedState = action.payload;
-      if (savedState.maxTodoIndex) {
-        return {...currentState, ...savedState}
+      if (savedState.todos && savedState.todos.maxTodoIndex) {
+        return {...currentState, ...savedState.todos}
       } else {
         return currentState
     }

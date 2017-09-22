@@ -1,8 +1,11 @@
 
 import {combineReducers} from 'redux'
 import todos from './todosReducer'
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions } from 'react-navigation'
 import {MainNavigation}  from '../containers/navigation'
+import settings from './settingsReducer'
+// import {REHYDRATE} from 'redux-persist/constants'
+
 // import DeviceInfo from 'react-native-device-info';
 
 /*
@@ -31,6 +34,16 @@ function nav(state , action) {
           state
       );
       break;
+      /*
+      case REHYDRATE:
+          debugger
+          const savedState = action.payload;
+          if (savedState.nav) {
+              return state.nav // {...state, ...savedState.nav} for nav no need to use saved ones (since dev may have changed routes)
+          } else {
+              return state.nav
+          }
+          */
     default:
       nextState = MainNavigation.router.getStateForAction(action, state);
       Object.assign(nextState,{uuid})
@@ -44,7 +57,8 @@ function nav(state , action) {
 const rootReducer = combineReducers({
   // short hand property names
   todos,
-    nav
+    nav,
+  settings
 })
 
 export default rootReducer
