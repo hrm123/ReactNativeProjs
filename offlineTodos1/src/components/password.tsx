@@ -50,18 +50,20 @@ class passwordUI extends React.Component<PasswordProps, PasswordState> {
                 <View style={styles.formGroup}>
                     <View style={styles.formGroupRow}>
                         <View style={styles.formRowLabel}>
-                            <Text>Enter a password (will needed each time you open the app):</Text>
+                            <Text>Enter password :</Text>
                         </View>
                         <View style={styles.formRowControl}>
                             <TextInput
                             value={this.state.SelectedPassword}
                             style={styles.input}
-                            placeholder='Enter a password'
+                            placeholder='Enter password'
                             selectionColor='#666666'
                             onChangeText={ (text) => this.setState({SelectedPassword : text})}
                             />{passwordError}
                         </View>
                     </View>
+
+                    { /*
                     <View style={styles.formGroupRow}>
                         <View style={styles.formRowLabel}>
                             <Text>Enter an Email ID (to send the selected password to):</Text>
@@ -76,6 +78,7 @@ class passwordUI extends React.Component<PasswordProps, PasswordState> {
                             />
                         </View>
                     </View>
+                    */ }
                     <View style={styles.formGroupRow}>
                         <Button
                             onPress={this.onClickSubmit}

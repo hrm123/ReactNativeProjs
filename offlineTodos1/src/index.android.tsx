@@ -30,14 +30,12 @@ export default class offlineTodos1 extends Component<Props, State> {
         store = configureStore({pwd: password})
         const encrypt = createTransform(
             (inboundState, key) => {
-                debugger
                 if (!inboundState) return inboundState;
                 const cryptedText = CryptoJS.AES.encrypt(JSON.stringify(inboundState), this.state.password + key);
 
                 return cryptedText.toString();
             },
             (outboundState, key) => {
-                debugger
                 if (!outboundState) return outboundState;
                 const bytes = CryptoJS.AES.decrypt(outboundState, this.state.password + key);
                 const decrypted = bytes.toString(CryptoJS.enc.Utf8);
@@ -50,7 +48,7 @@ export default class offlineTodos1 extends Component<Props, State> {
         persistStore(store,{storage: AsyncStorage, transforms: [encrypt]},()=> {
             console.log("rehydrated");
             this.setState({rehydrated:true});
-        }).purge();
+        });
     }
 
     passwordSet = (pwd) => {

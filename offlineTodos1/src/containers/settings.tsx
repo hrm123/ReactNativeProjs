@@ -86,7 +86,7 @@ export class SettingsTab extends React.Component<SettingsTabFullProps, TodosTSTy
 }
 
 
-const mapStateToProps = (state: TodosTSTypes.SettingsState /*, ownProps?: Props */): SettingsTabConnectProps => {
+const mapStateToProps = (state: TodosTSTypes.AppState /*, ownProps?: Props */): SettingsTabConnectProps => {
     const currentProps: SettingsTabConnectProps = Object.assign({}, this.props,  {
         EncryptionSet: state.settings.EncryptionSet,
         UserUnlocked: state.settings.UserUnlocked,
