@@ -2,9 +2,6 @@
 #
 .DS_Store
 
-#typescript
-artifacts/
-
 # Xcode
 #
 build/
@@ -27,7 +24,6 @@ project.xcworkspace
 
 # Android/IntelliJ
 #
-
 build/
 .idea
 .gradle
