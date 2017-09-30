@@ -51,7 +51,7 @@ class passwordUI extends React.Component<PasswordProps, PasswordState> {
                 <View style={styles.formGroup}>
                     <View style={styles.formGroupRow}>
                         <View style={styles.formRowLabel}>
-                            <Text>Enter password :</Text>
+                            <Text>Enter password ::</Text>
                         </View>
                         <View style={styles.formRowControl}>
                             <TextInput
@@ -60,6 +60,7 @@ class passwordUI extends React.Component<PasswordProps, PasswordState> {
                             placeholder='Enter password'
                             selectionColor='#666666'
                             onChangeText={ (text) => this.setState({SelectedPassword : text})}
+                            onSubmitEditing={this.onClickSubmit}
                             />{passwordError}
                         </View>
                     </View>
