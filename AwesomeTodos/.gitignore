@@ -22,13 +22,6 @@ DerivedData
 *.xcuserstate
 project.xcworkspace
 
-# Calabash iOS
-#
-ios/calabash.framework/
-
-# Calabash Android
-#
-android/calabash.framework/
 
 # Android/IntelliJ
 #
