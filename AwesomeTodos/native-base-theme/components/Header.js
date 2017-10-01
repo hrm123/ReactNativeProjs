@@ -89,6 +89,7 @@ export default (variables = variable) => {
 					marginTop: 2,
 					paddingRight: 10,
 					paddingLeft: 10,
+					flex:5
 				},
 				"NativeBase.IconNB": {
 					backgroundColor: "transparent",

@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text , TextInput} from 'react-native';
 import {Container, StyleProvider, Header, Content, Footer, Input, Item, FooterTab, Badge, Title, Left, Right, Body, Icon, Button} from 'native-base';
 import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
 
 export default class LayoutExample extends Component {
     render() {
+        let styl = getTheme(material);
+        console.log(styl);
         return (
-            <StyleProvider style={getTheme(material)}>
+            <StyleProvider style={styl}>
                 <Container>
                     <Header searchBar rounded>
-                            <Item>
+                        <Left>
+                            <Icon name="ios-menu" />
+                        </Left>
+                        <Body >
+                            <Item >
                                 <Icon name="ios-search" />
-                                <Input placeholder="Filter Todos" />
+                                <Input placeholder="Type Filter text" placeholderTextColor="#fff"/>
                             </Item>
-
+                        </Body>
+                        <Right>
+                            <Icon name="md-subway" />
+                        </Right>
                     </Header>
 
                     <Content>
