@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Text , TextInput} from 'react-native';
 import {Container, StyleProvider, Header, Content, Footer, Input, Item, FooterTab, Badge, Tab, Tabs, TabHeading, Title, Left, Right, Body, Icon, Button} from 'native-base';
-import getTheme from '../../native-base-theme/components';
-import material from '../../native-base-theme/variables/material';
-
 
 const Tab1 = () => <Text>tab1</Text>
 const Tab2 = () => <Text>tab2</Text>
@@ -12,10 +9,7 @@ const Tab4 = () => <Text>tab4</Text>
 
 export default class LayoutExample extends Component {
     render() {
-        let styl = getTheme(material);
-        console.log(styl);
         return (
-            <StyleProvider style={styl}>
                 <Container>
                     <Header searchBar rounded hasTabs >
                         <Left>
@@ -24,7 +18,7 @@ export default class LayoutExample extends Component {
                         <Body  >
                             <Item >
                                 <Icon name="ios-search" />
-                                <Input placeholder="Type Filter text"  style={{backgroundColor:"transparent"}}/>
+                                <Input placeholder="Type Filter text"  placeholderTextColor="#fff" style={{backgroundColor:"transparent"}}/>
                             </Item>
                         </Body>
                         <Right>
@@ -75,7 +69,6 @@ export default class LayoutExample extends Component {
 
                     </Footer>
                 </Container>
-            </StyleProvider>
     );
     }
 }
