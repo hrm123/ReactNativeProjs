@@ -11,5 +11,5 @@ describe('Layout component tests', () => {
     it('shallow mount works', () => {
         const wrapper = shallow(<LayoutExample />);
         expect(wrapper).toBeTruthy();
-    };
-}
+    });
+});
