@@ -5,4 +5,11 @@
 // test file
 import { shallow, mount, render } from 'enzyme';
 import LayoutExample from '../src/components/layout.js';
-const wrapper = shallow(<LayoutExample />);
+import React from 'react';
+
+describe('Layout component tests', () => {
+    it('shallow mount works', () => {
+        const wrapper = shallow(<LayoutExample />);
+        expect(wrapper).toBeTruthy();
+    };
+}

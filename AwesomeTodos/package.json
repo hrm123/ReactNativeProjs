@@ -26,6 +26,14 @@
     "react-test-renderer": "^16.0.0"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "testEnvironment": "jsdom",
+    "setupFiles": [
+      "./__tests__/Setup.js"
+    ],
+    "testRegex": "/__tests__/.*\\.spec\\.js$",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|react-native-drawer|native-base|react-native-keyboard-aware-scroll-view|react-native-vector-icons|react-native-easy-grid|native-base-shoutem-theme|@shoutem/animation|@shoutem/ui|tcomb-form-native)/)"
+    ]
   }
 }
