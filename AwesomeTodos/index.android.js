@@ -11,12 +11,13 @@ import {
   Text,
   View
 } from 'react-native';
-import LayoutExample from './src/components/layout.js';
+import LayoutExample from './src/components/landing.js';
+import Main from './src/components/mainpage.js';
 
 export default class AwesomeTodos extends Component {
   render() {
     return (
-        <LayoutExample />
+        <Main />
     );
   }
 }
