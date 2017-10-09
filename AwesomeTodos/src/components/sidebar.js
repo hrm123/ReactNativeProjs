@@ -3,14 +3,17 @@
  */
 import React, { Component } from 'react';
 import { Drawer } from 'native-base';
-import {Content} from 'native-base';
 import { View, Text } from 'react-native';
+import {Container, StyleProvider, Header, Content, Footer, Input, Item, FooterTab, Badge, Title, Left, Right, Body, Icon, Button} from 'native-base';
 
 export default class Sidebar extends Component {
     render() {
         return (
             <Content style={{backgroundColor:'#FFFFFF'}}>
-                <Text>Drawer</Text>
+                <Button vertical>
+                    <Icon name="person" />
+                    <Text>Settings</Text>
+                </Button>
             </Content>
         );
     }
