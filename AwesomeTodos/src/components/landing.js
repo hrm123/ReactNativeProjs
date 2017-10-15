@@ -3,6 +3,7 @@ import { Text , TextInput} from 'react-native';
 import {Container, StyleProvider, Header, Content, Footer, Input, Item, FooterTab, Badge, Title, Left, Right, Body, Icon, Button} from 'native-base';
 import getTheme from '../../native-base-theme/components';
 import material from '../../native-base-theme/variables/material';
+import styles from '../styles/common';
 
 export default class LandingPage extends Component {
     render() {
@@ -26,22 +27,22 @@ export default class LandingPage extends Component {
 
                     <Footer>
                         <FooterTab>
-                            <Button badge vertical>
-                                <Badge><Text style={{color: 'white'}}>2</Text></Badge>
+                            <Button vertical>
                                 <Icon name="ios-add" />
-                                <Text>Pending</Text>
+                                <Text style={styles.bodyText}>Pending</Text>
                             </Button>
                             <Button vertical>
                                 <Icon name="md-checkmark" />
-                                <Text>Done</Text>
+                                <Text style={styles.bodyText}>Done</Text>
                             </Button>
                             <Button vertical>
                                 <Icon name="trash" />
-                                <Text>Deleted</Text>
+                                <Text style={styles.bodyText}>Deleted</Text>
                             </Button>
-                            <Button vertical>
-                                <Icon name="person" />
-                                <Text>Settings</Text>
+                            <Button badge vertical>
+                                <Badge><Text style={{color: 'white'}}>2</Text></Badge>
+                                <Icon name="md-alert" />
+                                <Text style={styles.bodyText}>Alerts</Text>
                             </Button>
                         </FooterTab>
 
