@@ -4,10 +4,14 @@
 import {StyleSheet} from 'react-native';
 import { scale, moderateScale, verticalScale} from './screen';
 
-const styles = StyleSheet.create({
+
+export const customStyles = {
+    logoHeight :  75, // or can be  150 = ht, 300 = wd etc
+    logoWidth :  150
+};
+
+export default styles = StyleSheet.create({
     bodyText: {
         fontSize: moderateScale(14),
     }
 });
-
-export default styles;
