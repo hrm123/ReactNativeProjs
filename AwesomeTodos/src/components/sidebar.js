@@ -16,7 +16,6 @@ export default class Sidebar extends Component {
                     <Icon name="person" />
                     <Text style={styles.bodyText}>Settings</Text>
                 </Button>
-                <Logo />
             </Content>
         );
     }

@@ -28,19 +28,11 @@ export default class Logo extends React.Component {
                 height={customStyles.logoHeight}
                 width={customStyles.logoWidth}
             >
-                <Defs>
-                    <LinearGradient id="grad" x1="0" y1="0" x2={0.6*customStyles.logoWidth} y2="0">
-                        <Stop offset="0" stopColor="rgb(255,255,0)" stopOpacity="0"/>
-                        <Stop offset="1" stopColor="red" stopOpacity="1"/>
-                    </LinearGradient>
-                </Defs>
-                <Text x={customStyles.logoWidth/2} y={customStyles.logoHeight/2}
-                font-family="sans-serif"
-                font-size="20px"
-                text-anchor="middle"
-                fill="red">ATD!</Text>
-                <Path d="m 50 50 50 0 0 50 z" fillColor="blue"/>
-                <Ellipse cx={customStyles.logoWidth / 2} cy={customStyles.logoHeight/2} rx={0.3*customStyles.logoWidth} ry={0.37*customStyles.logoHeight} fill="url(#grad)"/>
+                <Rect x="1" y="0" width="30" height="30" fill="purple"/>
+                <Rect x="3" y="5" width="30" height="30" fill="blue"/>
+                <Rect x="5" y="10" width="30" height="30" fill="green"/>
+                <Rect x="7" y="15" width="30" height="30" fill="yellow"/>
+                <Rect x="9" y="20" width="30" height="30" fill="red"/>
             </Svg>
         )
     }
