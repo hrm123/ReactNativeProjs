@@ -6,8 +6,8 @@ import { scale, moderateScale, verticalScale} from './screen';
 
 
 export const customStyles = {
-    logoHeight :  75, // or can be  150 = ht, 300 = wd etc
-    logoWidth :  150
+    logoHeight :  50, // or can be  150 = ht, 300 = wd etc
+    logoWidth :  100
 };
 
 export default styles = StyleSheet.create({

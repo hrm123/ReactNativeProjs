@@ -25,14 +25,28 @@ export default class Logo extends React.Component {
         debugger;
         return (
             <Svg
-                height={customStyles.logoHeight}
+                height={1.3*customStyles.logoHeight}
                 width={customStyles.logoWidth}
             >
-                <Rect x="1" y="0" width="30" height="30" fill="purple"/>
-                <Rect x="3" y="5" width="30" height="30" fill="blue"/>
-                <Rect x="5" y="10" width="30" height="30" fill="green"/>
-                <Rect x="7" y="15" width="30" height="30" fill="yellow"/>
-                <Rect x="9" y="20" width="30" height="30" fill="red"/>
+                <Defs>
+                    <LinearGradient id="grad" x1="0" y1="0" x2={0.6*customStyles.logoWidth} y2="0">
+                        <Stop offset="50%" stopColor="black" stopOpacity=".75"/>
+                        <Stop offset="95%" stopColor="white" stopOpacity=".80"/>
+                    </LinearGradient>
+                    <LinearGradient id="grad1" x1="0" y1="0" x2={0.6*customStyles.logoWidth} y2="0">
+                        <Stop offset="50%" stopColor="white" stopOpacity=".75"/>
+                        <Stop offset="95%" stopColor="black" stopOpacity=".95"/>
+                    </LinearGradient>
+                </Defs>
+                <G>
+                <Ellipse cx={customStyles.logoWidth / 2} cy={1.3*customStyles.logoHeight/2} rx={0.3*customStyles.logoWidth} ry={0.6*customStyles.logoHeight} fill="url(#grad)"/>
+                    <Text x={0.5*customStyles.logoWidth} y={0.4*customStyles.logoHeight}
+                      fontFamily="sans-serif"
+                      fontSize={0.3*customStyles.logoWidth}
+                          textAnchor="middle"
+                      fill="url(#grad1)"
+                    >ATD</Text>
+                </G>
             </Svg>
         )
     }
