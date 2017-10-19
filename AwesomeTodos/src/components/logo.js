@@ -34,18 +34,26 @@ export default class Logo extends React.Component {
                         <Stop offset="95%" stopColor="white" stopOpacity=".80"/>
                     </LinearGradient>
                     <LinearGradient id="grad1" x1="0" y1="0" x2={0.6*customStyles.logoWidth} y2="0">
-                        <Stop offset="50%" stopColor="white" stopOpacity=".75"/>
-                        <Stop offset="95%" stopColor="black" stopOpacity=".95"/>
+                        <Stop offset="50%" stopColor="chocolate" stopOpacity=".75"/>
+                        <Stop offset="95%" stopColor="aqua" stopOpacity=".95"/>
+                    </LinearGradient>
+                    <LinearGradient id="earthColors"  x1="0" y1="0" x2={0.6*customStyles.logoWidth} y2={0.6*customStyles.logoHeight}>
+                        <Stop offset="0%" stopColor="brown" stopOpacity="0"/>
+                        <Stop offset="100%" stopColor="aqua" stopOpacity="1"/>
+                    </LinearGradient>
+                    <LinearGradient id="earthColors1"  x1="0%" y1="0%" x2="0%" y2="100%">
+                        <Stop offset="0%" stopColor="brown" stopOpacity="1"/>
+                        <Stop offset="100%" stopColor="aqua" stopOpacity="1"/>
                     </LinearGradient>
                 </Defs>
                 <G>
                 <Ellipse cx={customStyles.logoWidth / 2} cy={1.3*customStyles.logoHeight/2} rx={0.3*customStyles.logoWidth} ry={0.6*customStyles.logoHeight} fill="url(#grad)"/>
                     <Text x={0.5*customStyles.logoWidth} y={0.4*customStyles.logoHeight}
                       fontFamily="sans-serif"
-                      fontSize={0.3*customStyles.logoWidth}
+                      fontSize={0.25*customStyles.logoWidth}
                           textAnchor="middle"
-                      fill="url(#grad1)"
-                    >ATD</Text>
+                      fill="url(#earthColors1)"
+                    >πTW</Text>
                 </G>
             </Svg>
         )
