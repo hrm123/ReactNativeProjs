@@ -6,7 +6,7 @@ import { Drawer } from 'native-base';
 import { View, Text } from 'react-native';
 import {Container, StyleProvider, Header, Content, Footer, Input, Item, FooterTab, Badge, Title, Left, Right, Body, Icon, Button} from 'native-base';
 import styles from '../styles/common';
-import Logo from './logo1'
+import Logo2 from './logo2'
 
 export default class Sidebar extends Component {
     render() {
@@ -16,7 +16,7 @@ export default class Sidebar extends Component {
                     <Icon name="person" />
                     <Text style={styles.bodyText}>Settings</Text>
                 </Button>
-                <Logo />
+                <Logo2 />
             </Content>
         );
     }
