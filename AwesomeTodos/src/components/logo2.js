@@ -27,12 +27,18 @@ export default class Logo2 extends React.Component {
     render() {
         debugger;
         return (
-            <Svg version="1.1" id="Layer_1"  x="0px" y="0px"
-                             width="135" height="39" viewBox="0 0 135 39" enable-background="new 0 0 135 39" >
-                          <Rect x="71.411" y="17.171" Transform="matrix(-0.7072 0.707 -0.707 -0.7072 142.588 -17.6385)" fill-rule="evenodd" clip-rule="evenodd" fill="#FDC28E" width="7.07" height="7.07"/>
-                          <Rect x="57.244" y="17.172" Transform="matrix(-0.707 0.7072 -0.7072 -0.707 118.3964 -7.6375)" fill-rule="evenodd" clip-rule="evenodd" fill="#FDC28E" width="7.072" height="7.07"/>
-                          <Rect x="83.946" y="19.874" fill-rule="evenodd" clip-rule="evenodd" fill="#d3d3d3" width="40.833" height="1.667"/>
-                          <Rect x="9.946" y="19.874" fill-rule="evenodd" clip-rule="evenodd" fill="#d3d3d3" width="40.833" height="1.667"/>
+            <Svg version="1.1" id="Layer_1"  x="0" y="0"
+                             width="635" height="700" enable-background="new 0 0 135 39" >
+                          <Rect x="50" y="50" height="50" width="200" Transform="matrix(-0.7072 0.707 -0.707 -0.7072 142.588 -17.6385)" fill-rule="evenodd" clip-rule="evenodd" fill="black" />
+                          <Rect x="50" y="100" height="50" width="200" Transform="matrix(-0.707 0.7072 -0.7072 -0.707 118.3964 -7.6375)" fill-rule="evenodd" clip-rule="evenodd" fill="red" />
+                          <Rect x="50" y="150" height="50" width="200" fill-rule="evenodd" clip-rule="evenodd" fill="#d3d3d3"  fill="blue"/>
+                          <Rect x="50" y="200" height="50" width="200" fill-rule="evenodd" clip-rule="evenodd" fill="#d3d3d3"   fill="green"/>
+                          <Text x="100" y="250"
+                                                fontFamily="sans-serif"
+                                                fontSize={0.25*customStyles.logoWidth}
+                                                    textAnchor="middle"
+                                                fill="url(#earthColors1)"
+                                              >πTW</Text>
                           </Svg>
 
         )

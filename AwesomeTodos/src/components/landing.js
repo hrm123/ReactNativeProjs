@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Text , TextInput} from 'react-native';
 import {Container, StyleProvider, Header, Content, Footer, Input, Item, FooterTab, Badge, Title, Left, Right, Body, Icon, Button} from 'native-base';
-import getTheme from '../../native-base-theme/components';
-import material from '../../native-base-theme/variables/material';
+// import getTheme from '../../native-base-theme/components';
+// import material from '../../native-base-theme/variables/material';
 import styles from '../styles/common';
+import TodoList from './stateless'
 
 export default class LandingPage extends Component {
     render() {
-        let styl = getTheme(material);
-        console.log(styl);
+        // let styl = getTheme(material);
+        // console.log(styl);
         return (
-            <StyleProvider style={styl}>
                 <Container>
                     <Header searchBar rounded>
                         <Body >
@@ -22,7 +22,7 @@ export default class LandingPage extends Component {
                     </Header>
 
                     <Content>
-                        <Text> Your main content goes here </Text>
+                        <TodoList/>
                     </Content>
 
                     <Footer>
@@ -48,7 +48,6 @@ export default class LandingPage extends Component {
 
                     </Footer>
                 </Container>
-            </StyleProvider>
     );
     }
 }
