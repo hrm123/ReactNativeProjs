@@ -7,7 +7,7 @@
  */
 
 import React from 'react'
-import { Component } from 'react'
+import { Component , ReactNode} from 'react'
 import {
   SafeAreaView,
   StyleSheet,
@@ -25,7 +25,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
+export const App: () => any = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -34,11 +34,7 @@ const App: () => React$Node = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
+         
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
               <Text style={styles.sectionTitle}>Step One</Text>
@@ -112,4 +108,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
