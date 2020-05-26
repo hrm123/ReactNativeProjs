@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-amplify": "^3.0.12",
     "graphql": "^15.0.0",
     "immer": "^6.0.8",
     "nanoid": "^3.1.9",
