@@ -1,19 +1,7 @@
-import produce from "immer";
+import produce from 'immer';
+import nanoid from 'nanoid';
 
-/*<IfTypescript>*/
-type Todo = {
-  id: string;
-  name: string;
-  createdAt: string;
-  completed: boolean;
-};
-type State = { todos: Todo[]; currentTodo: string };
-type Action =
-  | { type: "add" | "update" | "delete"; payload: Todo }
-  | { type: "set-current"; payload: string };
-/*</IfTypescript>*/
-
-const reducer /*: React.Reducer<State, Action>*/ = (state, action) => {
+const todoslistReducer  = (state, action) => {
   switch (action.type) {
     case "set-current": {
       return produce(state, draft => {
@@ -49,3 +37,5 @@ const reducer /*: React.Reducer<State, Action>*/ = (state, action) => {
     }
   }
 };
+
+export default todoslistReducer;
